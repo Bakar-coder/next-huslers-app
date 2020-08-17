@@ -1,0 +1,179 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+@import "mixins";
+
+html {
+  box-sizing: border-box !important;
+  font-size: 62.5%;
+
+  @include respond(tab-land) {
+    font-size: 56.25%;
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%;
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%;
+  }
+}
+
+body {
+  background: $main-color !important;
+  font-size: 1.5rem;
+  line-height: 1.7;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.5s cubic-bezier(1, 0, 0, 1);
+  color: rgba($color: $white, $alpha: 0.5);
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & a {
+    text-decoration: none;
+  }
+
+  & ul {
+    list-style-type: none;
+  }
+
+  & h1 {
+    font-size: 2.93em;
+  }
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    line-height: 1.33;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: $white;
+  }
+
+  & h2 {
+    font-size: 2.3em;
+  }
+
+  & button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  & input {
+    background: $main-color;
+    width: 100%;
+    border: 1px solid $text-color;
+    padding: 1.6rem 1.8rem;
+    transition: all 0.3s ease;
+  }
+
+  & textarea {
+    font-family: inherit;
+    font-size: 1.4rem;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include respond(phone) {
+    padding: 0;
+  }
+}
+
+img {
+  position: relative;
+  max-width: 100%;
+}
+
+#__next {
+  height: 100%;
+}
+
+#__next-prerender-indicator {
+  display: none;
+}
+
+.nav-link {
+  font-size: inherit;
+}
+
+.Toastify {
+  &__toast--success {
+    background: $green !important;
+  }
+
+  &__toast--error {
+    background: $danger !important;
+  }
+
+  &__toast--warning {
+    background: $warning !important;
+    color: $black;
+  }
+
+  &__close-button {
+    color: $white !important;
+
+    &--error {
+      border: none;
+    }
+  }
+}
+
+.badge {
+  border-radius: 50% !important;
+  width: 2rem !important;
+  padding: 0.25rem 1rem;
+  font-size: 1.4rem;
+  background: $light;
+  cursor: pointer;
+
+  &-dark {
+    color: $white;
+    background: $dark;
+  }
+
+  &-warning {
+    color: $black;
+    background: $warning;
+  }
+
+  &-primary {
+    color: $white;
+    background: $primary;
+  }
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.noPage {
+  @include absCenter();
+
+  & img {
+    max-width: 100%;
+  }
+
+  & p {
+    font-size: 2.1rem;
+    text-align: center;
+    color: rgba($color: $white, $alpha: 0.5);
+  }
+}

@@ -1,0 +1,29 @@
+body {
+  line-height: 1.7;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.5s cubic-bezier(1, 0, 0, 1);
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & a {
+    text-decoration: none;
+  }
+
+  & ul {
+    list-style-type: none;
+  }
+}
+
+
+.carousel-inner {
+  height: 800px;
+}
+.carousel-item img {
+  width: 100%;
+}
+
+

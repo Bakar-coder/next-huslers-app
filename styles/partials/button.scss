@@ -1,0 +1,75 @@
+.button {
+  color: #fff;
+  position: relative;
+  font-weight: bold;
+  font-size: 1.4rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  padding: 1.3rem 3rem;
+  text-transform: uppercase;
+  background: linear-gradient(
+    135deg,
+    $blue-dark,
+    $primary,
+    $blue-dark,
+    $primary,
+    $blue-dark
+  );
+  background-size: 400% 400%;
+  display: inline-block;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  transition: all 0.5s cubic-bezier(1, 0, 0, 1);
+}
+
+.button:hover {
+  transform: scale(1.06);
+  box-shadow: 0px 5px 3.5rem rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 4px;
+  background: $light;
+  font-size: inherit;
+  cursor: pointer;
+
+  &-lg {
+    padding: 1.6rem 2.8rem;
+    font-weight: 700;
+  }
+
+  &-primary {
+    background: $primary;
+    color: $white;
+  }
+  &-warning {
+    background: $warning;
+    color: $black;
+    & a {
+      color: $black;
+    }
+  }
+
+  &-danger {
+    background: $danger;
+    color: $white;
+  }
+
+  &-success {
+    background: $success;
+    color: $white;
+  }
+}
+
+.zoid-outlet {
+  display: block !important;
+  min-width: 75px !important;
+  max-width: 100% !important;
+}
+
+.paypal-button {
+  width: 100% !important;
+}

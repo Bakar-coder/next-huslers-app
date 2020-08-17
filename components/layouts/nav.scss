@@ -1,0 +1,185 @@
+@import "../../styles/partials/mixins";
+
+.navbar {
+  height: 8.2rem;
+  box-shadow: 0px 5px 3.5rem rgba(0, 0, 0, 0.1);
+  z-index: 199;
+  position: sticky;
+  background: $secondary;
+  border-bottom: 1px solid $text-color;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  & a {
+    color: rgba($white, 0.5);
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white;
+    }
+  }
+
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+
+    & .menu {
+      font-size: 3.8rem;
+      cursor: pointer;
+      display: none;
+      color: $white;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+
+    & ul {
+      display: flex;
+      height: 100%;
+      align-items: center;
+
+      & li:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
+  }
+}
+
+.side-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  background: $secondary;
+  text-align: left;
+  height: 100%;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 200;
+
+  &-open {
+    transform: translateX(0);
+  }
+
+  & .nav-header {
+    width: 100%;
+    height: 30%;
+    background-image: url("/assets/images/1.jpg");
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+  }
+
+  & ul {
+    display: block;
+
+    & li {
+      line-height: 5.5rem;
+      width: 100%;
+      padding-left: 2em;
+      transition: all 0.3s ease-in-out;
+
+      & a {
+        color: $white;
+        width: 100%;
+        transition: all 0.3s ease-in-out;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background: $main-color;
+        border-left: 4px solid $white;
+      }
+
+      &:hover > a {
+        color: $yellow;
+        width: 100%;
+      }
+    }
+
+    & li > a {
+      display: block;
+    }
+  }
+  //transition: transform 0.3s ease-in-out;
+}
+
+.back-drop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  z-index: 199;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in;
+
+  &-open {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease-in;
+  }
+}
+
+@include respond(desktop) {
+  .navbar {
+    padding: 0 2em;
+  }
+}
+
+@include respond(tab-land) {
+  .navbar {
+    padding: 0 2em;
+  }
+}
+
+@include respond(tab-port) {
+  .navbar {
+    padding: 0 1em;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    &-content {
+      & .menu {
+        display: block;
+      }
+
+      & ul {
+        display: none;
+      }
+
+      & .navbar-nav {
+        display: none;
+      }
+
+      & .side-nav {
+        display: block;
+      }
+    }
+  }
+
+  .side-nav,
+  .back-drop {
+    display: block;
+  }
+}
+
+@include respond(phone) {
+  .navbar {
+    position: fixed;
+    padding: 0 1em;
+    z-index: 199;
+  }
+}

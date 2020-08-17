@@ -1,0 +1,107 @@
+.mbl {
+  margin-bottom: 8rem;
+}
+
+.mbm {
+  margin-bottom: 4rem;
+}
+
+.mbs {
+  margin-bottom: 1.5rem;
+}
+
+.active {
+  color: $orange !important;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  & .card {
+    width: 100%;
+    margin: 0.8rem;
+    height: 100%;
+    flex-basis: 31rem;
+    position: relative;
+
+    @include respond(tab-port) {
+      flex-basis: 34rem;
+    }
+
+    @include respond(tab-land) {
+      flex-basis: 36rem;
+    }
+
+    @include respond(phone) {
+      margin: 1.6rem 0.8rem;
+      flex-basis: 40rem;
+    }
+  }
+}
+
+.product-details {
+  padding: 0.8rem 2em;
+  width: 100%;
+  margin: auto;
+  & .img-container {
+    max-width: 100%;
+    position: relative;
+
+    & #player {
+      width: 100%;
+    }
+  }
+}
+
+.checkout-section {
+  margin: 2em;
+
+  @include respond(tab-port) {
+    margin: 1em;
+  }
+
+  @include respond(phone) {
+    margin: 6.5em 1em;
+  }
+
+  & .content {
+    display: flex;
+    justify-content: space-around;
+    background: $secondary;
+
+    @include respond(tab-land) {
+      flex-direction: column;
+    }
+
+    & .cart {
+      margin: 0;
+      padding: 3em;
+    }
+  }
+}
+
+.delivery-info {
+  background: $secondary;
+  padding: 3em;
+  min-width: 32rem;
+
+  &__content {
+    margin: 1rem auto;
+
+    & p {
+      line-height: 2;
+      color: rgba($color: $white, $alpha: 1);
+      & strong {
+        color: $warning;
+      }
+    }
+  }
+}
+
+.sub-title {
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
