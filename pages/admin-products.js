@@ -1,24 +1,18 @@
 import React from "react";
-import Product from "./product";
+import Products from "../components/admin/products";
 import { SET_PRODUCTS } from "../store/types";
 import { connect } from "react-redux";
 import { deleteProduct } from "../store/actions";
 import { bindActionCreators } from "redux";
 
 const AdminProducts = ({ products, deleteProduct }) => {
-  return products ? (
+  return (
     <main className="section section-top">
       <div className="grid">
-        {products.map((product) => (
-          <Product
-            product={product}
-            key={product._id}
-            deleteProduct={deleteProduct}
-          />
-        ))}
+        <Products products={products} deleteProduct={deleteProduct} />
       </div>
     </main>
-  ) : null;
+  )
 };
 
 AdminProducts.getInitialProps = async ({ store }) => {

@@ -1,16 +1,21 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
 import axios from "axios";
 import { SET_PRODUCTS } from "../store/types";
 import Home from "../components/home";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { deleteProduct } from "../store/actions";
+import { deleteProduct, setLoaded, addToCart } from "../store/actions";
 
-const Index = () => {
-  return (
-    <div className="wrapper">
-      <Home />
+const Index = ({ products, pageLoading, setLoaded, addToCart, auth, cart }) => {
+  useEffect(() => {
+    if (pageLoading) setLoaded();
+  }, [setLoaded]);
+  return pageLoading ? (
+    <div className='center'>
+      <img src='/assets/images/Preloader_2.gif' />
+    </div>
+  ) : (
+    <div className='wrapper'>
+      <Home products={products} addToCart={addToCart} auth={auth} cart={cart} />
     </div>
   );
 };
@@ -23,18 +28,20 @@ Index.getInitialProps = async ({ store }) => {
     if (data.products.length > 0) {
       const products = data.products;
       dispatch({ type: SET_PRODUCTS, payload: products });
-      return { products };
+      return { ...products };
     }
   } catch (ex) {
     console.log(ex);
   }
 };
 
-const mapState = ({ auth, products }) => ({
+const mapState = ({ auth, products, loading }) => ({
   auth: auth.isAuthenticated,
+  cart: products.cart,
   products: products.products,
+  pageLoading: loading.loading,
 });
-const mapDispatch = (dispatch) =>
-  bindActionCreators({ deleteProduct }, dispatch);
 
-export default connect(mapState, mapDispatch)(Index);
+export default connect(mapState, { deleteProduct, setLoaded, addToCart })(
+  Index
+);

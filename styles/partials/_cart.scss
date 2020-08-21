@@ -17,7 +17,7 @@
     position: relative;
 
     & img {
-      max-height: 100%;
+      max-height: 75%;
     }
   }
 }
@@ -28,10 +28,8 @@ table {
   border-spacing: 0;
   background: $main-color none repeat scroll 0 0;
   border-radius: 0;
-  border-style: solid;
   text-align: center;
   margin-bottom: 0;
-  border: 2px solid $dark-light;
 
   @include respond(phone) {
     display: block;
@@ -44,7 +42,7 @@ table {
     border-bottom: 1px solid $light;
     background: $secondary none repeat scroll 0 0;
     & > tr {
-      padding: 2em;
+
     }
   }
 
@@ -52,7 +50,6 @@ table {
     border-top: medium none;
     font-size: 15px;
     text-transform: capitalize;
-    padding: 20px 10px;
     text-align: center;
     font-weight: 500;
     vertical-align: middle;
@@ -60,16 +57,14 @@ table {
     color: $warning;
 
     @include respond(phone) {
-      padding: 20px 10px !important;
+
     }
   }
 
   & th,
   & td {
     text-align: center;
-    padding: 1.6rem;
-    border-bottom: 1px solid $dark-light;
-    border-right: 1px solid $dark-light;
+
 
     @include respond(phone) {
       padding: 0.2rem;
@@ -83,13 +78,12 @@ table {
 
   & td {
     border-top: medium none;
-    padding: 20px 10px;
     min-width: 2.5rem;
     vertical-align: middle;
     font-size: 13px;
 
     @include respond(phone) {
-      padding-bottom: 3rem;
+
     }
   }
 
@@ -101,7 +95,6 @@ table {
       }
       & .badge {
         margin-right: 0;
-        padding: 0.4rem 1.2rem;
         text-align: right;
       }
     }

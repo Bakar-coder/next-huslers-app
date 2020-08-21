@@ -24,8 +24,7 @@ const ShippingAddress = ({ setShipping, user, router, shipping }) => {
 
   const handleFormSubmission = (event) => {
     event.preventDefault();
-    setShipping(state);
-    router.push("/checkout");
+    setShipping(state, router);
   };
 
   const {

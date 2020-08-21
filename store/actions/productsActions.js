@@ -3,12 +3,11 @@ import {
   SET_CART,
   DELETE_CART,
   CART_PRODUCT_DECREMENT,
-  CART_PRODUCT_INCREMENT,
   SET_TOTAL_AMOUNT,
   SET_ORDERS,
   SET_SHIPPING,
   LOADING,
-  LOADED,
+  REMOVE_LOADING,
 } from "../types";
 import catchException from "../../utils/exceptions";
 import setAlert from "../../utils/alerts";
@@ -47,10 +46,18 @@ export const productIncrement = (product, auth) => async (
       dispatch({ type: LOADING });
       return (
         data.success &&
-        dispatch({ type: LOADED }) &&
+        dispatch({ type: REMOVE_LOADING }) &&
         dispatch({ type: SET_CART, payload: data.cart })
       );
     }
+  } catch (ex) {
+    catchException(ex);
+  }
+};
+
+export const setLoaded = () => async (dispatch, getState, api) => {
+  try {
+    dispatch({ type: REMOVE_LOADING, payload: false });
   } catch (ex) {
     catchException(ex);
   }
@@ -91,7 +98,7 @@ export const productDecrement = (product, auth) => async (
         dispatch({ type: LOADING });
         return (
           data.success &&
-          dispatch({ type: LOADED }) &&
+          dispatch({ type: REMOVE_LOADING }) &&
           dispatch({ type: CART_PRODUCT_DECREMENT, payload: data.cart })
         );
       }
@@ -148,9 +155,10 @@ export const getOrders = (orders) => async (dispatch, getState, api) => {
   }
 };
 
-export const setShipping = (data) => async (dispatch, getState, api) => {
+export const setShipping = (data, router) => async (dispatch, getState, api) => {
   try {
     dispatch({ type: SET_SHIPPING, payload: data });
+    return router.push("/checkout");
   } catch (ex) {
     catchException(ex);
   }

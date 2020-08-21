@@ -1,5 +1,4 @@
 import React from "react";
-import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import ProductsComponent from "../components/products/products";
 import { bindActionCreators } from "redux";
@@ -9,11 +8,8 @@ import { SET_PRODUCTS } from "../store/types";
 
 const Products = ({ products, deleteProduct }) => {
   return (
-    <div className="wrapper">
-      <Helmet>
-        <title>NextApp | Products</title>
-      </Helmet>
-      <div className="container">
+    <div className='wrapper'>
+      <div className='container'>
         <ProductsComponent products={products} deleteProduct={deleteProduct} />
       </div>
     </div>

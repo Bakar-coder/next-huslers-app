@@ -16,6 +16,7 @@ import {
   momoPay,
 } from "./productsActions";
 import { add_Product, edit_Product, deleteProduct } from "./adminActions";
+import { setLoaded, setLoading } from "./loadingActions";
 export {
   setUser,
   logoutUser,
@@ -38,4 +39,6 @@ export {
   createOrder,
   deleteOrder,
   momoPay,
+  setLoaded,
+  setLoading,
 };

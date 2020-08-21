@@ -44,7 +44,7 @@ const ShoppingCart = ({
 
   if (cart && cartProds.length > 0) setAmount(cartProds);
   return cart && cart.length > 0 ? (
-    <div className="section section-top">
+    <div className='section section-top'>
       <Cart
         cart={cart}
         products={products}
@@ -60,11 +60,11 @@ const ShoppingCart = ({
       />
     </div>
   ) : (
-    <div className="cart" style={{ textAlign: "center" }}>
+    <div className='cart' style={{ textAlign: "center" }}>
       <p>No items added to your shopping Cart yet.</p>
-      <Link route="/products">
+      <Link route='/products'>
         <button
-          className="btn btn-warning btn-lg"
+          className='btn btn-warning btn-lg'
           onClick={() => console.log("to shop")}
           style={{ textTransform: "uppercase", marginTop: "4rem" }}
         >
@@ -90,10 +90,10 @@ ShoppingCart.getInitialProps = async ({ store }) => {
   }
 };
 
-const mapState = ({ auth, products }) => ({
+const mapState = ({ auth, products, loading }) => ({
   cart: products.cart,
   products: products.products,
-  loading: products.loading,
+  loading: loading.loading,
   auth: auth.isAuthenticated,
   total: products.total,
 });

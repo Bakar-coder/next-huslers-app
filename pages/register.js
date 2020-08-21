@@ -5,7 +5,7 @@ import { registerUser } from "../store/actions";
 
 function Register(props) {
   return (
-    <div className="wrapper">
+    <div className='wrapper'>
       <Signup registerUser={props.registerUser} />
     </div>
   );

@@ -45,7 +45,10 @@ export const setUser = () => async (dispatch) => {
     const token = cookie.get("x-auth-token");
     if (token) {
       const user = await Jwt(token);
-      if (user.exp < Date.now() / 1000) return dispatch({ type: REMOVE_USER });
+      if (user.exp < Date.now() / 1000) {
+        dispatch({ type: REMOVE_USER });
+        return (window.location = "/");
+      }
       dispatch({ type: SET_USER, payload: user });
     }
   } catch (ex) {

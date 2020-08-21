@@ -5,7 +5,7 @@ const Product = ({ product, onDelete }) => {
   return (
     <div className="card" key={product._id}>
       <div className="card--image">
-        <img src={`${__dirname}${product.cover}`} alt={product.title} />
+        <img src={`${process.env.BASE_URL}/${product.cover}`} alt={product.title} />
       </div>
       <div className="card--content">
         <h3 className="card-title">{product.title} </h3>
@@ -14,7 +14,7 @@ const Product = ({ product, onDelete }) => {
           <div>
             <div className="grouped">
               <button type="submit" className="btn btn--primary">
-                <Link route={`admin-edit-product/${product.id}`}>Edit</Link>
+                <Link route={`/admin-edit-product/${product._id}`}>Edit</Link>
               </button>
               <button
                 type="submit"

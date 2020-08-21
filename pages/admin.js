@@ -1,13 +1,10 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import AdminComponent from "../components/admin/admin";
 
 const Admin = () => {
   return (
-    <div className="wrapper">
-      <Helmet>
-        <title>Ghetto Hustlers Entertainment | Admin</title>
-      </Helmet>
-      <h1>Admin</h1>
+    <div className='wrapper'>
+      <AdminComponent />
     </div>
   );
 };

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { withRouter } from "next/router";
+import { connect } from "react-redux";
+import { edit_Product } from '../../store/actions'
 
-function EditProduct({ edit_Product, router, products }) {
+function EditProduct({ products, edit_Product, router }) {
   const { id } = router.query;
-  const [productItem] =
-    id && products && products.filter((prod) => prod._id === id);
+  const [productItem] = id && products && products.filter(prod => prod._id === id)
 
   const [product, setProduct] = useState({
     id: productItem._id,
@@ -173,4 +174,6 @@ function EditProduct({ edit_Product, router, products }) {
   );
 }
 
-export default withRouter(EditProduct);
+const mapState = ({ products }) => ({ products: products.products })
+
+export default connect(mapState, { edit_Product })(withRouter(EditProduct));

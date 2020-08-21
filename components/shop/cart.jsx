@@ -25,8 +25,8 @@ const Cart = ({
     });
 
   return (
-    <div className="cart">
-      <div className="table-content table-responsive">
+    <div className='cart'>
+      <div className='table-content table-responsive'>
         <table>
           <thead>
             <tr>
@@ -43,7 +43,7 @@ const Cart = ({
               cartProds.map((product) => (
                 <tr key={product._id}>
                   <td>
-                    <div className="image-container">
+                    <div className='image-container'>
                       <img
                         src={`${process.env.BASE_URL}/${product.cover}`}
                         alt={product.title}
@@ -57,27 +57,31 @@ const Cart = ({
 
                   <td>
                     {loading ? (
-                      <span className="badge badge-warning">...</span>
+                      <span className='badge badge-primary'>
+                        <img src='/assets/images/preloader.gif' />
+                      </span>
                     ) : (
                       <span
-                        className="badge badge-warning"
+                        className='badge badge-warning'
                         onClick={() => productDecrement(product, auth)}
                       >
                         -
                       </span>
                     )}
                     {loading ? (
-                      <span className="badge badge-primary">...</span>
+                      <span className='badge badge-primary'>
+                        <img src='/assets/images/preloader.gif' />
+                      </span>
                     ) : (
                       <span
-                        className="badge badge-primary"
+                        className='badge badge-primary'
                         onClick={() => productIncrement(product, auth)}
                       >
                         +
                       </span>
                     )}
                     <button
-                      className="btn btn-danger"
+                      className='btn btn-danger'
                       onClick={() => deleteCartItem(product)}
                     >
                       Delete
@@ -89,16 +93,16 @@ const Cart = ({
         </table>
       </div>
 
-      <div className="order-sec">
+      <div className='order-sec'>
         <h4>
           Grand Total : <span>$ {total}</span>
         </h4>
 
         <div>
-          <Link route="/products">
+          <Link route='/products'>
             <a>
               <button
-                className="btn btn-primary btn-lg"
+                className='btn btn-primary btn-lg'
                 style={{ textTransform: "uppercase" }}
               >
                 &larr; Continue Shopping
@@ -106,10 +110,10 @@ const Cart = ({
             </a>
           </Link>
 
-          <Link route="/shipping">
+          <Link route='/shipping'>
             <a>
               <button
-                className="btn btn-warning btn-lg"
+                className='btn btn-warning btn-lg'
                 style={{ textTransform: "uppercase" }}
               >
                 Proceed to Checkout &rarr;

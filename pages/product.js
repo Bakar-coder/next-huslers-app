@@ -6,7 +6,7 @@ import { bindActionCreators } from "redux";
 
 const SingleProduct = ({ products, auth, addToCart }) => {
   return (
-    <section className="wrapper">
+    <section className='wrapper'>
       <ProductDetails products={products} addToCart={addToCart} auth={auth} />
     </section>
   );

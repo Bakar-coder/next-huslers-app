@@ -90,8 +90,7 @@ function Signup(props) {
         <h2>SIGN UP</h2>
         <p>create a free account.</p>
       </div>
-      <div className="row">
-        <div className="col col-lg-6">
+
           <div className="form-group">
             <input
               type="text"
@@ -106,29 +105,25 @@ function Signup(props) {
             <label htmlFor="firstName" className="form-label">
               First Name
             </label>
-          </div>
-        </div>
-        <div className="col col-lg-6">
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              name="lastName"
-              id="lastName"
-              value={lastName}
-              onChange={handleInputChange}
-              required
-              placeholder="Last Name"
-            />
-            <label htmlFor="lastName" className="form-label">
-              Last Name
-            </label>
-          </div>
-        </div>
       </div>
 
-      <div className="row">
-        <div className="col col-lg-6">
+      <div className="form-group">
+        <input
+          type="text"
+          className="form-control"
+          name="lastName"
+          id="lastName"
+          value={lastName}
+          onChange={handleInputChange}
+          required
+          placeholder="Last Name"
+        />
+        <label htmlFor="lastName" className="form-label">
+          Last Name
+        </label>
+      </div>
+
+
           <div className="form-group">
             <input
               type="text"
@@ -152,8 +147,8 @@ function Signup(props) {
               <p className="error">{errors.username}</p>
             )}
           </div>
-        </div>
-        <div className="col col-lg-6">
+
+
           <div className="form-group">
             <input
               type="email"
@@ -176,8 +171,8 @@ function Signup(props) {
               <p className="error">{errors.email}</p>
             )}
           </div>
-        </div>
-      </div>
+
+
 
       <div className="form-group">
         <input

@@ -18,7 +18,7 @@ const Product = ({ auth, product, router, addToCart, cart }) => {
           <h4 className="card--price"> $ {product.price} </h4>
           <div>
             <button type="button" className="btn btn-warning">
-              <Link to={`/product/${product.title}`}>View</Link>
+              <Link to={`/product/${product.title}`}>Play</Link>
             </button>
 
             <button

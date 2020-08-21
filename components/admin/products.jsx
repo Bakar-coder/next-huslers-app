@@ -8,7 +8,7 @@ const AdminProducts = ({ products, deleteProduct }) => {
         {products.map((product) => (
           <Product
             product={product}
-            key={product.id}
+            key={product._id}
             onDelete={deleteProduct}
           />
         ))}

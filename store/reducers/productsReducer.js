@@ -12,8 +12,6 @@ import {
   CART_PRODUCT_INCREMENT,
   SET_TOTAL_AMOUNT,
   SET_ORDERS,
-  LOADED,
-  LOADING,
 } from "../types";
 
 const productsState = {
@@ -21,17 +19,12 @@ const productsState = {
   cart: null,
   orders: null,
   total: null,
-  loading: false,
 };
 
 export default (state = productsState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case LOADED:
-      return { ...state, loading: false };
-    case LOADING:
-      return { ...state, loading: true };
     case SET_PRODUCTS:
       return { ...state, products: payload };
     case REMOVE_PRODUCTS:

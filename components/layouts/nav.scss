@@ -6,7 +6,7 @@
   z-index: 199;
   position: sticky;
   background: $secondary;
-  border-bottom: 1px solid $text-color;
+
   top: 0;
   left: 0;
   width: 100%;
@@ -143,7 +143,7 @@
   }
 }
 
-@include respond(tab-port) {
+@include respond(tab-land) {
   .navbar {
     padding: 0 1em;
     position: sticky;

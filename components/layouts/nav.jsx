@@ -37,7 +37,7 @@ const Nav = (props) => {
             </li>
             {props.user && props.user["stuff"] && (
               <li>
-                <Link route="/admin-products">
+                <Link route="admin-products">
                   <a>Admin-Products</a>
                 </Link>
               </li>
