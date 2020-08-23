@@ -4,11 +4,7 @@ import { connect } from "react-redux";
 import { loginUser } from "../store/actions";
 
 function Login(props) {
-  return (
-    <div className="wrapper">
-      <Signin loginUser={props.loginUser} />
-    </div>
-  );
+  return <Signin loginUser={props.loginUser} />;
 }
 
 export default connect(null, { loginUser })(Login);

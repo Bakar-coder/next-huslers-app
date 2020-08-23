@@ -5,6 +5,7 @@ import { withRouter } from "next/router";
 
 import { setUser, logoutUser, setCart, getCart } from "../../store/actions";
 import Header from "../header";
+import Footer from "../partials/footer";
 
 const Layout = ({
   cart,
@@ -26,10 +27,12 @@ const Layout = ({
   return (
     <Fragment>
       <Header />
-      {router.route === "/admin" ? null : (
+      {router.route === "/admin" ? null : router.route ===
+        "/login" ? null : router.route === "/register" ? null : (
         <Nav user={user} logoutUser={logoutUser} router={router} cart={cart} />
       )}
       {children}
+      <Footer />
     </Fragment>
   );
 };

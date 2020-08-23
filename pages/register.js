@@ -4,11 +4,7 @@ import { connect } from "react-redux";
 import { registerUser } from "../store/actions";
 
 function Register(props) {
-  return (
-    <div className='wrapper'>
-      <Signup registerUser={props.registerUser} />
-    </div>
-  );
+  return <Signup registerUser={props.registerUser} />;
 }
 
 export default connect(null, { registerUser })(Register);

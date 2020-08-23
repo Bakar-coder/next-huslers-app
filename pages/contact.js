@@ -1,9 +1,10 @@
 import React from "react";
+import ContactComponent from "../components/contact";
 
 function Contact(props) {
   return (
-    <div className="wrapper">
-      <h1>Contact</h1>
+    <div className='wrapper'>
+      <ContactComponent />
     </div>
   );
 }

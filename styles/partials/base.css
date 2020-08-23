@@ -1,0 +1,191 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box !important;
+          box-sizing: border-box !important;
+  font-size: 62.5%;
+}
+
+@media only screen and (max-width: 62em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+@media only screen and (max-width: 48em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media only screen and (min-width: 112.5em) {
+  html {
+    font-size: 75%;
+  }
+}
+
+body {
+  background-color: #1a191f;
+  font-size: 1.5rem;
+  line-height: 1.7;
+  font-family: "Poppins", sans-serif;
+  -webkit-transition: all 0.5s cubic-bezier(1, 0, 0, 1);
+  transition: all 0.5s cubic-bezier(1, 0, 0, 1);
+  color: rgba(255, 255, 255, 0.5);
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body a {
+  text-decoration: none;
+}
+
+body ul {
+  list-style-type: none;
+}
+
+body h1 {
+  font-size: 2.93em;
+}
+
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+  line-height: 1.33;
+  font-weight: 600;
+  margin-bottom: 0;
+  color: #ffffff;
+}
+
+body h2 {
+  font-size: 2.3em;
+}
+
+body button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+body input {
+  background: #1a191f;
+  width: 100%;
+  padding: 1.6rem 1.8rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+body textarea {
+  font-family: inherit;
+  font-size: 1.4rem;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+@media only screen and (max-width: 36em) {
+  body {
+    padding: 0;
+  }
+}
+
+img {
+  position: relative;
+  max-width: 100%;
+}
+
+#__next {
+  height: 100%;
+}
+
+#__next-prerender-indicator {
+  display: none;
+}
+
+.nav-link {
+  font-size: inherit;
+}
+
+.Toastify__toast--success {
+  background: #23b782 !important;
+}
+
+.Toastify__toast--error {
+  background: #fa804c !important;
+}
+
+.Toastify__toast--warning {
+  background: #ffc107 !important;
+  color: #000;
+}
+
+.Toastify__close-button {
+  color: #ffffff !important;
+}
+
+.Toastify__close-button--error {
+  border: none;
+}
+
+.badge {
+  border-radius: 50% !important;
+  width: 2rem !important;
+  padding: 0.25rem 1rem;
+  font-size: 1.4rem;
+  background: #f5f6f7;
+  cursor: pointer;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.badge-dark {
+  color: #ffffff;
+  background: #05022a;
+}
+
+.badge-warning {
+  color: #000;
+  background: #ffc107;
+}
+
+.badge-primary {
+  color: #ffffff;
+  background: #2998ff;
+}
+
+.noPage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.noPage img {
+  max-width: 100%;
+}
+
+.noPage p {
+  font-size: 2.1rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+}
+/*# sourceMappingURL=base.css.map */

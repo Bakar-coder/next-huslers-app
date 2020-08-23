@@ -1,159 +1,236 @@
 import React, { Fragment } from "react";
 import { Link } from "../../routes";
 import { withRouter } from "next/router";
-import { IoMdMenu, IoMdClose } from "react-icons/io";
 import "./nav.scss";
-import SideNav from "./sideNav";
 
 const Nav = (props) => {
-  const [state, setState] = React.useState({ isOpen: false });
-  const { isOpen } = state;
+  const [state, setState] = React.useState({ isOpen: false, navOpen: false });
+  const { isOpen, navOpen } = state;
+
+  const handleToggle = () => {
+    setState({ ...state, isOpen: !state.isOpen });
+  };
 
   const handleNavToggle = () => {
-    setState({ ...state, isOpen: !state.isOpen });
+    setState({ ...state, navOpen: !state.navOpen });
   };
 
   return (
     <Fragment>
-      <nav className="navbar py-4">
-        <div className="navbar-content">
-          <Link route="/">
-            <a>
-              <h3>GHETTO HUSTLERS ENT</h3>
-            </a>
-          </Link>
-          {!isOpen && (
-            <IoMdMenu className="menu" onClick={() => handleNavToggle()} />
-          )}
-          {isOpen && (
-            <IoMdClose className="menu" onClick={() => handleNavToggle()} />
-          )}
-
-          <ul>
-            <li>
-              <Link route="/">
-                <a>Home</a>
-              </Link>
-            </li>
-            {props.user && props.user["stuff"] && (
-              <li>
-                <Link route="admin-products">
-                  <a>Admin-Products</a>
+      <header className='header'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-12'>
+              <div className='header__content'>
+                <Link route='/'>
+                  <a className='header__logo'>
+                    <img src='/img/logo.svg' alt='' />
+                  </a>
                 </Link>
-              </li>
-            )}
-            {props.user && props.user["stuff"] && (
-              <li>
-                <Link route="admin-add-product">
-                  <a>Add-Product</a>
-                </Link>
-              </li>
-            )}
 
-            <li>
-              <Link route="about">
-                <a>Gallery</a>
-              </Link>
-            </li>
+                <ul
+                  className={
+                    navOpen ? "header__nav header__nav--active" : "header__nav"
+                  }
+                >
+                  <li className='header__nav-item'>
+                    <Link route='/'>
+                      <a className='header__nav-link'>Home</a>
+                    </Link>
+                  </li>
 
-            <li>
-              <Link route="about">
-                <a>Events</a>
-              </Link>
-            </li>
+                  <li className='header__nav-item'>
+                    <Link route='products'>
+                      <a className='header__nav-link'>Shop</a>
+                    </Link>
+                  </li>
 
-            <li>
-              <Link route="about">
-                <a>Services</a>
-              </Link>
-            </li>
+                  <li className='header__nav-item'>
+                    <Link route='cart'>
+                      <a className='header__nav-link'>
+                        Cart{" "}
+                        {props.cart && props.cart.length > 0 && (
+                          <span className='badge badge-warning'>
+                            {props.cart.length}
+                          </span>
+                        )}
+                      </a>
+                    </Link>
+                  </li>
 
-            <li>
-              <Link route="about">
-                <a>Downloads</a>
-              </Link>
-            </li>
+                  <li className='header__nav-item'>
+                    <Link route='downloads'>
+                      <a className='header__nav-link'>Downloads</a>
+                    </Link>
+                  </li>
 
-            <li>
-              <Link route="cart">
-                <a>
-                  Cart{" "}
-                  {props.cart && props.cart.length > 0 && (
-                    <span className="badge badge-warning">
-                      {props.cart.length}
-                    </span>
-                  )}
-                </a>
-              </Link>
-            </li>
+                  <li
+                    className='dropdown header__nav-item'
+                    onClick={handleToggle}
+                  >
+                    <a
+                      className='dropdown-toggle header__nav-link header__nav-link--more'
+                      role='button'
+                      id='dropdownMenuMore'
+                      data-toggle='dropdown'
+                      aria-haspopup='true'
+                      aria-expanded='false'
+                    >
+                      <i className='icon ion-ios-more'></i>
+                    </a>
 
-            <li>
-              <Link route="products">
-                <a>Shop</a>
-              </Link>
-            </li>
+                    <ul
+                      className={
+                        isOpen
+                          ? "dropdown-menu header__dropdown-menu show"
+                          : "dropdown-menu header__dropdown-menu"
+                      }
+                      aria-labelledby='dropdownMenuMore'
+                    >
+                      <li onClick={handleToggle}>
+                        <Link route='events'>
+                          <a>Events</a>
+                        </Link>
+                      </li>
+                      <li onClick={handleToggle}>
+                        <Link route='services'>
+                          <a>Services</a>
+                        </Link>
+                      </li>
 
-            {props.user && (
-              <li>
-                <Link route="orders">
-                  <a>Orders</a>
-                </Link>
-              </li>
-            )}
+                      <li onClick={handleToggle}>
+                        <Link route='gallery'>
+                          <a>Gallery</a>
+                        </Link>
+                      </li>
 
-            <li>
-              <Link route="products">
-                <a>Contact</a>
-              </Link>
-            </li>
+                      {props.user && (
+                        <li onClick={handleToggle}>
+                          <Link route='orders'>
+                            <a>Orders</a>
+                          </Link>
+                        </li>
+                      )}
 
-            {props.user && (
-              <li>
-                <Link route="#">
-                  <a>
-                    <button className="button" onClick={props.logoutUser}>
-                      Sign out
+                      <li onClick={handleToggle}>
+                        <Link route='contact'>
+                          <a>Contacts</a>
+                        </Link>
+                      </li>
+
+                      {props.user === null && (
+                        <li onClick={handleToggle}>
+                          <Link route='login'>
+                            <a>Sign In</a>
+                          </Link>
+                        </li>
+                      )}
+
+                      {props.user === null && (
+                        <li onClick={handleToggle}>
+                          <Link route='register'>
+                            <a>Sign Up</a>
+                          </Link>
+                        </li>
+                      )}
+                      {props.user && (
+                        <li onClick={handleToggle}>
+                          <Link route='#'>
+                            <a onClick={props.logoutUser}>Sign Out</a>
+                          </Link>
+                        </li>
+                      )}
+                    </ul>
+                  </li>
+                </ul>
+
+                <div className='header__auth'>
+                  <form action='#' className='header__search'>
+                    <input
+                      className='header__search-input'
+                      type='text'
+                      placeholder='Search...'
+                    />
+                    <button className='header__search-button' type='button'>
+                      <i className='icon ion-ios-search'></i>
                     </button>
-                  </a>
-                </Link>
-              </li>
-            )}
+                    <button className='header__search-close' type='button'>
+                      <i className='icon ion-md-close'></i>
+                    </button>
+                  </form>
 
-            {!props.user && (
-              <li>
-                <Link route="register">
-                  <a>Sign Up</a>
-                </Link>
-              </li>
-            )}
+                  <button className='header__search-btn' type='button'>
+                    <i className='icon ion-ios-search'></i>
+                  </button>
 
-            {props.user === null && (
-              <li>
-                <Link route="login">
-                  <a>
-                    <button className="button">Sign in</button>
-                  </a>
-                </Link>
-              </li>
-            )}
-          </ul>
+                  <div className='dropdown header__lang'>
+                    <a
+                      className='dropdown-toggle header__nav-link'
+                      href='#'
+                      role='button'
+                      id='dropdownMenuLang'
+                      data-toggle='dropdown'
+                      aria-haspopup='true'
+                      aria-expanded='false'
+                    >
+                      EN
+                    </a>
+
+                    <ul
+                      className='dropdown-menu header__dropdown-menu'
+                      aria-labelledby='dropdownMenuLang'
+                    >
+                      <li>
+                        <a href='#'>English</a>
+                      </li>
+                      <li>
+                        <a href='#'>Spanish</a>
+                      </li>
+                      <li>
+                        <a href='#'>Russian</a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {props.user ? (
+                    <Link route='#'>
+                      <a className='header__sign-in' onClick={props.logoutUser}>
+                        <i className='icon ion-ios-log-in'></i>
+                        <span>sign Out</span>
+                      </a>
+                    </Link>
+                  ) : (
+                    <Link route='login'>
+                      <a className='header__sign-in'>
+                        <i className='icon ion-ios-log-in'></i>
+                        <span>sign in</span>
+                      </a>
+                    </Link>
+                  )}
+                </div>
+
+                <button
+                  className={
+                    navOpen ? "header__btn header__btn--active" : "header__btn"
+                  }
+                  type='button'
+                  onClick={handleNavToggle}
+                >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </nav>
-
-      <SideNav
-        user={props.user}
-        cart={props.cart}
-        isOpen={isOpen}
-        logoutUser={props.logoutUser}
-        state={state}
-        setState={setState}
-        handleNavToggle={handleNavToggle}
-      />
-
-      <div
-        className={isOpen ? "back-drop back-drop-open" : "back-drop"}
-        onClick={() => handleNavToggle()}
-      />
+      </header>
+      {navOpen && (
+        <div
+          className={navOpen ? "back-drop back-drop-open" : "back-drop"}
+          onClick={handleNavToggle}
+        />
+      )}
     </Fragment>
   );
 };

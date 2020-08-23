@@ -1,0 +1,29 @@
+body {
+  line-height: 1.7;
+  font-family: "Poppins", sans-serif;
+  -webkit-transition: all 0.5s cubic-bezier(1, 0, 0, 1);
+  transition: all 0.5s cubic-bezier(1, 0, 0, 1);
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body a {
+  text-decoration: none;
+}
+
+body ul {
+  list-style-type: none;
+}
+
+.carousel-inner {
+  height: 800px;
+}
+
+.carousel-item img {
+  width: 100%;
+}
+/*# sourceMappingURL=app.css.map */
