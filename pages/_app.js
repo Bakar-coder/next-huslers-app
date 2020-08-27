@@ -6,7 +6,6 @@ import { ToastContainer } from "react-toastify";
 import App from "next/app";
 import Layout from "../components/layouts/layout";
 import "react-toastify/dist/ReactToastify.css";
-import "../styles/reset.css";
 import "../styles/main.scss";
 
 class MyApp extends App {

@@ -193,3 +193,53 @@ input[type="file"] {
 body::-webkit-scrollbar {
   display: none;
 }
+
+.Toastify {
+  &__toast--success {
+    background: $green !important;
+  }
+
+  &__toast--error {
+    background: $danger !important;
+  }
+
+  &__toast--warning {
+    background: $warning !important;
+    color: $black;
+  }
+
+  &__close-button {
+    color: $white !important;
+
+    &--error {
+      border: none;
+    }
+  }
+}
+
+.badge {
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  background: $light;
+  cursor: pointer;
+
+  &-dark {
+    color: $white;
+    background: $dark;
+  }
+
+  &-warning {
+    color: $black;
+    background: $warning;
+  }
+
+  &-primary {
+    color: $white;
+    background: $primary;
+  }
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
