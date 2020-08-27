@@ -60,7 +60,7 @@ const ShoppingCart = ({
       />
     </div>
   ) : (
-    <div className='cart' style={{ textAlign: "center" }}>
+    <div className='cart' style={{ textAlign: "center", minHeight: "88vh" }}>
       <p>No items added to your shopping Cart yet.</p>
       <Link route='/products'>
         <button

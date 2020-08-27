@@ -1,188 +1,195 @@
-@import "partials/fonts";
-@import "partials/base";
+@import "partials/mixins";
 @import "partials/button";
-@import "partials/utils";
-@import "partials/card";
-@import "partials/cart";
-@import "partials/plyr";
 @import "partials/header";
-@import "partials/admin";
 
-.wrapper {
-  min-width: 100vw;
-  min-height: 100vh;
+a:not([href]) {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: #ffd80e;
+  }
+}
+
+a {
+  cursor: pointer;
+}
+
+.main__table thead {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.7);
+
+  & tr {
+    padding: 2rem 0;
+  }
+}
+
+.OverflowTable {
   width: 100%;
-  padding-bottom: 10rem;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
+.OverflowTable table {
+  width: 100%;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.5);
 
-.form {
-  max-width: 768px;
-  padding: 4.5rem 3.5rem;
-  border-radius: 5px;
-  margin: 2rem auto;
-  background: $secondary;
-
-  .row {
-    display: flex;
-    width: 100%;
-
-    @include respond(phone) {
-      display: block;
-
-      & .col {
-        width: 100%;
-      }
-    }
-
-    & .col {
-      flex: 1 1 40rem;
-
-      &:not(:last-child) {
-        margin-right: 1.5rem;
-      }
-    }
-  }
-
-  &-header {
-    margin-bottom: 2rem;
-    color: rgba($white, 0.5);
-  }
-
-  &-group {
-    width: 100% !important;
-    margin-bottom: 2.4rem;
-    position: relative;
-  }
-
-  &-control {
-    outline: none;
-    padding: 1.8rem 2rem;
-    border-radius: 0.6rem;
-    color: $white;
-    font-size: inherit;
-    border: 1px solid $main-color;
-    transition: all 0.5s cubic-bezier(1, 0, 0, 1);
-
-    &:focus {
-
-      border: 1px solid $main-color;
-      box-shadow: 0px 1rem 2rem rgba(0, 0, 0, 0.1);
-      border-bottom: 3px solid $primary;
-    }
-
-    &:focus:invalid {
-      border: 1px solid $text-color;
-      border-bottom: 3px solid $orange;
-      color: $orange;
-    }
-  }
-
-  &-control:focus:valid ~ &-label {
-    position: absolute;
-    top: -30%;
-    left: 1.8rem;
-    font-size: 1.8rem;
-    color: rgba($white, 0.5);
-    background: $main-color;
-    padding: 0.2rem 0.8rem;
-    border-radius: 0.4rem;
-    opacity: 1;
-    visibility: visible;
-  }
-
-  &-label {
-    position: absolute;
-    transition: all 0.5s cubic-bezier(1, 0, 0, 1);
-    top: 25%;
-    left: 1.6rem;
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  & .title {
-    text-align: center;
-    font-weight: 400;
-    padding-bottom: 4.5rem;
-    font-size: 3.2rem;
-
-    & span {
-      color: $primary;
-      font-size: 2.8rem;
-    }
-  }
-
-  &-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: rgba($white, 0.5);
-
-    & a {
-      color: $primary;
-    }
-
-    & .text-sec {
-      display: flex;
-
-      @include respond(phone) {
-        display: block;
-
-        & .submit-button {
-          width: 100%;
-        }
-
-        p {
-          text-align: center;
-        }
-      }
-
-      & p:not(:last-child) {
-        margin-right: 2rem;
-      }
-    }
+  & tr {
+    background: $secondary;
+    border-bottom: 0.4rem;
   }
 }
 
-.title {
-  padding-bottom: 25px;
+.image-container {
+  max-width: 6rem;
+  position: relative;
+
+  & img {
+    max-width: 100%;
+  }
 }
 
-.container {
-  width: calc(100vw - 4em);
-  margin: auto;
+.order-sec {
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem auto;
+  align-items: center;
+
+  & a:not(last-child) {
+    margin-right: 0.5rem;
+  }
+
+  @include respond(tab-land) {
+    flex-direction: column;
+  }
 
   @include respond(tab-port) {
-    width: calc(100vw - 2em);
+    div {
+      display: block;
+
+      button {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+
+  & span {
+    color: $warning;
   }
 }
 
-.error {
-  color: $orange;
-  margin-top: 1rem;
+.delete-item {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 
-  &-input {
-    border: 1px solid $orange;
-    color: $orange;
+  & span {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 50%;
+    background: $primary;
+    margin-right: 0.4rem;
+    cursor: pointer;
+
+    p {
+      margin: 0;
+      cursor: pointer;
+    }
   }
 }
 
-.img-center {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
+.badge-btn:nth-child(2) {
+  background: $success;
 }
 
-.img-fluid {
-  max-width: 100%;
-  height: auto;
-}
-
-img {
-  vertical-align: middle;
-  border-style: none;
-}
-
-textarea {
+.profile__textarea {
   width: 100%;
-  background: $main-color;
+  background-color: rgba(210, 201, 255, 0.04);
+  border: 1px solid transparent;
+  color: #fff;
+  font-size: 16px;
+  // line-height: 0.4px;
+  width: 100%;
+  color: #fff;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  padding: 0.6rem 20px;
+}
+
+.page {
+  margin-top: 5em;
+
+  @include respond(phone) {
+    margin-top: 0;
+  }
+}
+
+.plyr {
+  width: 100%;
+  position: relative;
+
+  & video {
+    outline: none !important;
+    height: 100%;
+  }
+
+  & div {
+    max-width: 100% !important;
+  }
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* 720 / 1280 = 0.5625 */
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#reactFlowPlayer > a {
+  visibility: hidden;
+}
+
+select {
+  & option {
+    background: $secondary;
+    border: none !important;
+    outline: none !important;
+
+    &:hover {
+      background: $warning;
+    }
+  }
+}
+
+input[type="file"] {
+  padding: 0;
+  &::-webkit-file-upload-button {
+    background: $warning;
+    padding: 0.8rem;
+    color: $black;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0 3rem 3rem 0;
+    -webkit-border-radius: 0 3rem 3rem 0;
+    -moz-border-radius: 0 3rem 3rem 0;
+    -ms-border-radius: 0 3rem 3rem 0;
+    -o-border-radius: 0 3rem 3rem 0;
+  }
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }

@@ -2,7 +2,7 @@ import React from "react";
 
 function Gallery(props) {
   return (
-    <div className="wrapper">
+    <div  style={{  minHeight: "88vh" }}>
       <h1>Gallery</h1>
     </div>
   );

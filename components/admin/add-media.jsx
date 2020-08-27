@@ -2,34 +2,40 @@ import React, { useState } from "react";
 import { withRouter } from "next/router";
 import Progressbar from "../progress";
 
-const AddProduct = ({ add_Product, router }) => {
+const AddMedia = ({ add_Product, router }) => {
   const [product, setProduct] = useState({
     title: "",
     description: "",
     price: "",
     category: "",
-    stock: "",
+    fileType: "",
+    artist: "",
+    genre: "",
+    releaseDate: "",
   });
 
   const [file, setFile] = useState("");
+  const [cover, setCover] = useState("");
+  const [coverUploadPercentage, setCoverUploadPercentage] = useState(0);
   const [fileUploadPercentage, setFileUploadPercentage] = useState(0);
 
   const handleFormSubmission = (e) => {
     e.preventDefault();
     const postProduct = new FormData();
     postProduct.append("file", file);
+    postProduct.append("cover", cover);
     postProduct.append("title", product.title);
     postProduct.append("description", product.description);
     postProduct.append("price", product.price);
     postProduct.append("category", product.category);
-    postProduct.append("stock", product.stock);
-    postProduct.append("featured", product.featured);
-    postProduct.append("published", product.published);
+    postProduct.append("fileType", product.fileType);
     add_Product(
       postProduct,
       router,
       setFileUploadPercentage,
-      fileUploadPercentage
+      setCoverUploadPercentage,
+      fileUploadPercentage,
+      coverUploadPercentage
     );
   };
 
@@ -44,7 +50,19 @@ const AddProduct = ({ add_Product, router }) => {
     setFile(e.target.files[0]);
   };
 
-  const { title, description, price, category, stock } = product;
+  const handleCoverUpload = (e) => {
+    setCover(e.target.files[0]);
+  };
+
+  const {
+    title,
+    artist,
+    genre,
+    releaseDate,
+    description,
+    category,
+    fileType,
+  } = product;
 
   return (
     <div className='content'>
@@ -58,10 +76,10 @@ const AddProduct = ({ add_Product, router }) => {
             >
               <div className='row'>
                 <div className='col-12'>
-                  <h4 className='profile__title'>Add Product</h4>
+                  <h4 className='profile__title'>Add Audio Or Video</h4>
                 </div>
 
-                <div className='col-12 '>
+                <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
                   <div className='profile__group'>
                     <label className='profile__label' htmlFor='title'>
                       Title
@@ -80,15 +98,15 @@ const AddProduct = ({ add_Product, router }) => {
 
                 <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
                   <div className='profile__group'>
-                    <label className='profile__label' htmlFor='category'>
-                      Category
+                    <label className='profile__label' htmlFor='artist'>
+                      Artist
                     </label>
                     <input
                       type='text'
                       className='profile__input'
-                      name='category'
-                      id='category'
-                      value={category}
+                      name='artist'
+                      id='artist'
+                      value={artist}
                       onChange={handleInputChange}
                       required
                     />
@@ -97,15 +115,32 @@ const AddProduct = ({ add_Product, router }) => {
 
                 <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
                   <div className='profile__group'>
-                    <label className='profile__label' htmlFor='stock'>
-                      Number in Stock
+                    <label className='profile__label' htmlFor='genre'>
+                      Genre
                     </label>
                     <input
                       type='text'
                       className='profile__input'
-                      name='stock'
-                      id='stock'
-                      value={stock}
+                      name='genre'
+                      id='genre'
+                      value={genre}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
+                  <div className='profile__group'>
+                    <label className='profile__label' htmlFor='releaseDate'>
+                      Release Date
+                    </label>
+                    <input
+                      type='text'
+                      className='profile__input'
+                      name='releaseDate'
+                      id='releaseDate'
+                      value={releaseDate}
                       onChange={handleInputChange}
                       required
                     />
@@ -115,7 +150,7 @@ const AddProduct = ({ add_Product, router }) => {
                 <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
                   <div className='profile__group'>
                     <label className='profile__label' htmlFor='file'>
-                      Image
+                      File Upload
                     </label>
                     <input
                       type='file'
@@ -131,15 +166,52 @@ const AddProduct = ({ add_Product, router }) => {
 
                 <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
                   <div className='profile__group'>
-                    <label className='profile__label' htmlFor='price'>
-                      Price
+                    <label className='profile__label' htmlFor='cover'>
+                      File Upload Cover
                     </label>
                     <input
-                      type='number'
+                      type='file'
+                      className='profile__textarea'
+                      name='cover'
+                      id='cover'
+                      value={cover}
+                      onChange={handleCoverUpload}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
+                  <div className='profile__group'>
+                    <label className='profile__label' htmlFor='fileType'>
+                      File Upload Type
+                    </label>
+                    <select
+                      class='custom-select profile__textarea'
+                      name='fileType'
+                      id='fileType'
+                      value={fileType}
+                      onChange={handleInputChange}
+                      required
+                    >
+                      <option selected=''> Select File Upload Type</option>
+                      <option value='aud'>Audio</option>
+                      <option value='vid'>Video</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
+                  <div className='profile__group'>
+                    <label className='profile__label' htmlFor='category'>
+                      Category
+                    </label>
+                    <input
+                      type='text'
                       className='profile__input'
-                      name='price'
-                      id='price'
-                      value={price}
+                      name='category'
+                      id='category'
+                      value={category}
                       onChange={handleInputChange}
                       required
                     />
@@ -175,7 +247,7 @@ const AddProduct = ({ add_Product, router }) => {
                       onClick={() => setFeatured(!featured)}
                       checked={featured && "checked"}
                     />
-                    <label for='featured'>Featured</label>
+                    <label for='featured'>Set Featured</label>
                   </div>
                 </div>
 
@@ -190,11 +262,11 @@ const AddProduct = ({ add_Product, router }) => {
                       onClick={() => setPublished(!published)}
                       checked={published && "checked"}
                     />
-                    <label for='published'>Published</label>
+                    <label for='published'>Set Published</label>
                   </div>
                 </div>
 
-                {file && fileUploadPercentage > 0 && (
+                {file && cover && fileUploadPercentage > 0 && (
                   <div className='form-group'>
                     <p className='text-warning'>
                       Uploaded {fileUploadPercentage}%
@@ -205,7 +277,7 @@ const AddProduct = ({ add_Product, router }) => {
 
                 <div className='col-12'>
                   <button className='profile__btn' type='submit'>
-                    Add Product
+                    Save
                   </button>
                 </div>
               </div>
@@ -217,4 +289,4 @@ const AddProduct = ({ add_Product, router }) => {
   );
 };
 
-export default withRouter(AddProduct);
+export default withRouter(AddMedia);

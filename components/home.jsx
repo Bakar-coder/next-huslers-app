@@ -10,7 +10,7 @@ const Home = ({ products, addToCart, router, auth, cart }) => {
       <header className='slider'>
         <Carousel />
       </header>
-      <HomeSection />
+      <HomeSection products={products} />
     </div>
   );
 };

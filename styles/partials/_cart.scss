@@ -1,105 +1,3 @@
-.cart {
-  padding: 3em;
-  margin: 2em auto 1em auto;
-  background: $secondary;
-  max-width: 98%;
-
-  @include respond(phone) {
-    padding: 2em;
-    margin: auto;
-  }
-
-  & .image-container {
-    vertical-align: middle;
-    border-style: none;
-    height: 10rem;
-    min-width: 10rem;
-    position: relative;
-
-    & img {
-      max-height: 75%;
-    }
-  }
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-  background: $main-color none repeat scroll 0 0;
-  border-radius: 0;
-  text-align: center;
-  margin-bottom: 0;
-
-  @include respond(phone) {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-  }
-
-  & thead {
-    border-bottom: 1px solid $light;
-    background: $secondary none repeat scroll 0 0;
-    & > tr {
-
-    }
-  }
-
-  & th {
-    border-top: medium none;
-    font-size: 15px;
-    text-transform: capitalize;
-    text-align: center;
-    font-weight: 500;
-    vertical-align: middle;
-    white-space: nowrap;
-    color: $warning;
-
-    @include respond(phone) {
-
-    }
-  }
-
-  & th,
-  & td {
-    text-align: center;
-
-
-    @include respond(phone) {
-      padding: 0.2rem;
-    }
-  }
-
-  & th:first-child,
-  & td:first-child {
-    text-align: left;
-  }
-
-  & td {
-    border-top: medium none;
-    min-width: 2.5rem;
-    vertical-align: middle;
-    font-size: 13px;
-
-    @include respond(phone) {
-
-    }
-  }
-
-  & td:last-child {
-    min-width: 20.2rem;
-    @include respond(phone) {
-      span {
-        margin-bottom: 1rem;
-      }
-      & .badge {
-        margin-right: 0;
-        text-align: right;
-      }
-    }
-  }
-}
 
 .order-sec {
   margin-top: 2em;
@@ -141,3 +39,7 @@ table {
     }
   }
 }
+
+
+
+

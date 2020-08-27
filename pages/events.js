@@ -2,7 +2,7 @@ import React from "react";
 
 function Event(props) {
   return (
-    <div className="wrapper">
+    <div  style={{  minHeight: "88vh" }}>
       <h1>Event</h1>
     </div>
   );

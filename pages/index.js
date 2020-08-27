@@ -10,7 +10,7 @@ const Index = ({ products, pageLoading, setLoaded, addToCart, auth, cart }) => {
     if (pageLoading) setLoaded();
   }, [setLoaded]);
   return pageLoading ? (
-    <div className='center'>
+    <div className='center' style={{  minHeight: "88vh" }}>
       <img src='/assets/images/Preloader_2.gif' />
     </div>
   ) : (

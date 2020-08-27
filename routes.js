@@ -5,6 +5,7 @@ routes
   .add("contact")
   .add("downloads")
   .add("events")
+  .add("media")
   .add("gallery")
   .add("checkout")
   .add("products")

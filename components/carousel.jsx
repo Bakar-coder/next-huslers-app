@@ -2,13 +2,13 @@ import React, { Fragment } from "react";
 import AwesomeSlider from "react-awesome-slider";
 import withAutoplay from "react-awesome-slider/dist/autoplay";
 import "react-awesome-slider/dist/styles.css";
-import "react-awesome-slider/dist/custom-animations/open-animation.css";
+import "react-awesome-slider/dist/custom-animations/fall-animation.css";
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 const slider = (
   <AutoplaySlider
-    animation='openAnimation'
+    animation='fallAnimation'
     play={true}
     cancelOnInteraction={false}
     interval={6000}

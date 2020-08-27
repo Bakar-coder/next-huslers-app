@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { withRouter } from "next/router";
+import { useRouter } from "next/router";
+import Country from "../country";
 
-const ShippingAddress = ({ setShipping, user, router, shipping }) => {
+const ShippingAddress = ({ setShipping, user, shipping }) => {
+  const router = new useRouter();
   const [state, setState] = useState({
     firstName: shipping
       ? shipping.firstName
@@ -39,180 +41,181 @@ const ShippingAddress = ({ setShipping, user, router, shipping }) => {
     city,
   } = state;
   return (
-    <form onSubmit={handleFormSubmission} className="form">
-      <div className="form-header">
-        <h2>BILLING DETAILS</h2>
-        <p>Enter your billing details to continue.</p>
-      </div>
+    <div className='content'>
+      <div className='container'>
+        <div className='tab-content'>
+          <div className='tab-pane fade show active'>
+            <form
+              onSubmit={handleFormSubmission}
+              className='profile__form'
+              style={{ maxWidth: "50rem", margin: "auto" }}
+            >
+              <div className='row'>
+                <div className='col-12'>
+                  <h4 className='profile__title'>Billing details</h4>
+                </div>
 
-      <div className="row">
-        <div className="col col-lg-6">
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              name="firstName"
-              id="firstName"
-              value={firstName}
-              onChange={handleInputChange}
-              required
-              placeholder="First Name"
-            />
-            <label htmlFor="firstName" className="form-label">
-              First Name
-            </label>
+                <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
+                  <div className='profile__group'>
+                    <label className='profile__label' htmlFor='firstName'>
+                      First Name
+                    </label>
+                    <input
+                      type='text'
+                      className='profile__input'
+                      name='firstName'
+                      id='firstName'
+                      value={firstName}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
+                  <div className='profile__group'>
+                    <label className='profile__label' htmlFor='lastName'>
+                      Last Name
+                    </label>
+                    <input
+                      type='text'
+                      className='profile__input'
+                      name='lastName'
+                      id='lastName'
+                      value={lastName}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
+                  <div className='profile__group'>
+                    <label className='profile__label' htmlFor='email'>
+                      Email
+                    </label>
+                    <input
+                      type='email'
+                      className='profile__input'
+                      name='email'
+                      id='email'
+                      value={email}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
+                  <div className='profile__group'>
+                    <label className='profile__label' htmlFor='phone'>
+                      Phone Number
+                    </label>
+                    <input
+                      type='tel'
+                      className='profile__input'
+                      name='phone'
+                      id='phone'
+                      value={phone}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
+                  <div className='profile__group'>
+                    <label className='profile__label' htmlFor='address'>
+                      Address
+                    </label>
+                    <input
+                      type='text'
+                      className='profile__input'
+                      name='address'
+                      id='address'
+                      value={address}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
+                  <div className='profile__group'>
+                    <label className='profile__label' htmlFor='postalCode'>
+                      Zip / Postal Code
+                    </label>
+                    <input
+                      type='text'
+                      className='profile__input'
+                      name='postalCode'
+                      id='postalCode'
+                      value={postalCode}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
+                  <div className='profile__group'>
+                    <label className='profile__label' for='country'>
+                      Country / State
+                    </label>
+                    <Country
+                      country={country}
+                      inPutChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+
+                <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
+                  <div className='profile__group'>
+                    <label className='profile__label' htmlFor='city'>
+                      Town / City
+                    </label>
+                    <input
+                      type='text'
+                      className='profile__input'
+                      name='city'
+                      id='city'
+                      value={city}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className='col-12'>
+                  <div className='profile__group'>
+                    <label className='profile__label' htmlFor='orderNotes'>
+                      Order Notes - Optional
+                    </label>
+                    <textarea
+                      type='text'
+                      className='profile__textarea'
+                      id='orderNotes'
+                      name='orderNotes'
+                      value={orderNotes}
+                      col='1'
+                      row='30'
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+
+                <div className='col-12'>
+                  <button className='profile__btn' type='submit'>
+                    Save
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
-        <div className="col col-lg-6">
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              name="lastName"
-              id="lastName"
-              value={lastName}
-              onChange={handleInputChange}
-              required
-              placeholder="Last Name"
-            />
-            <label htmlFor="lastName" className="form-label">
-              Last Name
-            </label>
-          </div>
-        </div>
       </div>
-
-      <div className="row">
-        <div className="col col-lg-6">
-          <div className="form-group">
-            <input
-              type="email"
-              className="form-control"
-              name="email"
-              id="email"
-              value={email}
-              onChange={handleInputChange}
-              required
-              placeholder="Email"
-            />
-            <label htmlFor="email" className="form-label">
-              Email
-            </label>
-          </div>
-        </div>
-        <div className="col col-lg-6">
-          <div className="form-group">
-            <input
-              type="tel"
-              className="form-control"
-              name="phone"
-              id="phone"
-              value={phone}
-              onChange={handleInputChange}
-              required
-              placeholder="Phone number"
-            />
-            <label htmlFor="phone" className="form-label">
-              Phone number
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <div className="form-group">
-        <input
-          type="text"
-          className="form-control"
-          name="address"
-          id="address"
-          value={address}
-          onChange={handleInputChange}
-          required
-          placeholder="Address"
-        />
-        <label htmlFor="address" className="form-label">
-          Address
-        </label>
-      </div>
-
-      <div className="row">
-        <div className="col col-lg-6">
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              name="postalCode"
-              id="postalCode"
-              value={postalCode}
-              onChange={handleInputChange}
-              required
-              placeholder="Zip / Postal Code"
-            />
-            <label htmlFor="postalCode" className="form-label">
-              Zip / Postal Code
-            </label>
-          </div>
-        </div>
-
-        <div className="col col-lg-6">
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              name="country"
-              id="country"
-              value={country}
-              onChange={handleInputChange}
-              required
-              placeholder="State / Country"
-            />
-            <label htmlFor="country" className="form-label">
-              State / Country
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <div className="form-group">
-        <input
-          type="text"
-          className="form-control"
-          name="city"
-          id="city"
-          value={city}
-          onChange={handleInputChange}
-          required
-          placeholder="Town / City"
-        />
-        <label htmlFor="city" className="form-label">
-          Town / City
-        </label>
-      </div>
-
-      <div className="form-group">
-        <textarea
-          type="text"
-          className="form-control"
-          id="orderNotes"
-          name="orderNotes"
-          value={orderNotes}
-          col="4"
-          row="30"
-          onChange={handleInputChange}
-          placeholder="Order Notes - Optional"
-        />
-        <label className="form-label" id="orderNotes">
-          {orderNotes && "Order Notes "}
-        </label>
-      </div>
-
-      <div className="form-footer">
-        <button type="submit" className="button">
-          Submit
-        </button>
-      </div>
-    </form>
+    </div>
   );
 };
 
-export default withRouter(ShippingAddress);
+export default ShippingAddress;

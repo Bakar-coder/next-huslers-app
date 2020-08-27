@@ -24,7 +24,7 @@ const Nav = (props) => {
               <div className='header__content'>
                 <Link route='/'>
                   <a className='header__logo'>
-                    <img src='/img/logo.svg' alt='' />
+                    <img src='/img/logo.png' alt='' />
                   </a>
                 </Link>
 
@@ -44,6 +44,14 @@ const Nav = (props) => {
                       <a className='header__nav-link'>Shop</a>
                     </Link>
                   </li>
+
+                  {props.user && props.user.stuff && (
+                    <li className='header__nav-item'>
+                      <Link route='admin'>
+                        <a className='header__nav-link'>admin</a>
+                      </Link>
+                    </li>
+                  )}
 
                   <li className='header__nav-item'>
                     <Link route='cart'>
@@ -90,6 +98,11 @@ const Nav = (props) => {
                       <li onClick={handleToggle}>
                         <Link route='events'>
                           <a>Events</a>
+                        </Link>
+                      </li>
+                      <li onClick={handleToggle}>
+                        <Link route='media'>
+                          <a>Add Media</a>
                         </Link>
                       </li>
                       <li onClick={handleToggle}>

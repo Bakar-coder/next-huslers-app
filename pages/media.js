@@ -1,5 +1,5 @@
 import React from "react";
-import AddProduct from "../components/admin/add-product";
+import AddMedia from "../components/admin/add-media";
 import { add_Product } from "../store/actions";
 import { connect } from "react-redux";
 import requireAdmin from "../hocs/requireAdmin";
@@ -21,7 +21,7 @@ const AdminAddProduct = ({ add_Product }) => {
           <div className='row'>
             <div className='col-12'>
               <div className='section__wrap'>
-                <h2 className='section__title'>Add Product Section</h2>
+                <h2 className='section__title'>Add Media Section</h2>
 
                 <ul className='breadcrumb'>
                   <li className='breadcrumb__item'>
@@ -30,7 +30,7 @@ const AdminAddProduct = ({ add_Product }) => {
                     </Link>
                   </li>
                   <li className='breadcrumb__item breadcrumb__item--active'>
-                    Add Product
+                    Add Media
                   </li>
                 </ul>
               </div>
@@ -38,7 +38,7 @@ const AdminAddProduct = ({ add_Product }) => {
           </div>
         </div>
       </section>
-      <AddProduct add_Product={add_Product} />
+      <AddMedia add_Product={add_Product} />
     </div>
   );
 };

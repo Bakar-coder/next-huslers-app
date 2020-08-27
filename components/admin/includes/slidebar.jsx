@@ -1,6 +1,13 @@
 import React from "react";
+import { Link } from "../../../routes";
 
 const Slidebar = () => {
+  const [state, setState] = React.useState({ isOpen: false, navOpen: false });
+  const { isOpen, navOpen } = state;
+
+  const handleToggle = () => {
+    setState({ ...state, isOpen: !state.isOpen });
+  };
   const date = new Date();
   const year = date.getFullYear();
   return (
@@ -68,12 +75,17 @@ const Slidebar = () => {
             data-toggle='dropdown'
             aria-haspopup='true'
             aria-expanded='false'
+            onClick={handleToggle}
           >
             <i className='icon ion-ios-copy'></i> Pages
           </a>
 
           <ul
-            className='dropdown-menu sidebar__dropdown-menu scrollbar-dropdown mCustomScrollbar _mCS_1'
+            className={
+              isOpen
+                ? "dropdown-menu sidebar__dropdown-menu scrollbar-dropdown mCustomScrollbar _mCS_1 show"
+                : "dropdown-menu sidebar__dropdown-menu scrollbar-dropdown mCustomScrollbar _mCS_1"
+            }
             aria-labelledby='dropdownMenuMore'
             style={{ overflow: "visible" }}
           >
@@ -90,22 +102,14 @@ const Slidebar = () => {
                 dir='ltr'
               >
                 <li>
-                  <a href='add-item.html'>Add item</a>
+                  <Link route='admin-products'>
+                    <a>Products</a>
+                  </Link>
                 </li>
                 <li>
-                  <a href='edit-user.html'>Edit user</a>
-                </li>
-                <li>
-                  <a href='signin.html'>Sign In</a>
-                </li>
-                <li>
-                  <a href='signup.html'>Sign Up</a>
-                </li>
-                <li>
-                  <a href='forgot.html'>Forgot password</a>
-                </li>
-                <li>
-                  <a href='404.html'>404 Page</a>
+                  <Link route='admin-add-product'>
+                    <a>Add Product</a>
+                  </Link>
                 </li>
               </div>
             </div>
