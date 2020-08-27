@@ -4,7 +4,7 @@ import setError from "../../utils/exceptions";
 import setAlert from "../../utils/alerts";
 import progressbar from "../../utils/uploadProgress";
 
-export const add_Product = (
+export const add_media = (
   formData,
   router,
   setFileUploadPercentage,
@@ -13,7 +13,7 @@ export const add_Product = (
   coverUploadPercentage
 ) => async (dispatch, getState, api) => {
   try {
-    const { data } = await api.post("/admin/products/add-product", formData, {
+    const { data } = await api.post("/media/add-media", formData, {
       headers: { "Content-Type": "multipart/form-data" },
       onUploadProgress: (event) =>
         progressbar(
@@ -25,19 +25,19 @@ export const add_Product = (
         ),
     });
     setAlert(data);
-    return router.push("/admin-products");
+    return router.push("/");
   } catch (ex) {
     setError(ex);
   }
 };
 
-export const edit_Product = (formData, router) => async (
+export const edit_media = (formData, router) => async (
   dispatch,
   getState,
   api
 ) => {
   try {
-    const { data } = await api.post("/admin/products/edit-product", formData, {
+    const { data } = await api.post("/media/edit-media", formData, {
       headers: { "Content-Type": "multipart/form-data" },
       onUploadProgress: (event) =>
         progressbar(
@@ -49,7 +49,7 @@ export const edit_Product = (formData, router) => async (
         ),
     });
     if (data.success) {
-      dispatch({ type: UPDATE_PRODUCT, payload: data.product });
+      dispatch({ type: UPDATE_PRODUCT, payload: data.media });
       setAlert(data);
       router.push("/");
     }
@@ -58,10 +58,10 @@ export const edit_Product = (formData, router) => async (
   }
 };
 
-export const deleteProduct = (product) => async (dispatch, getState, api) => {
+export const deleteMedia = (media) => async (dispatch, getState, api) => {
   try {
-    const { data } = await api.post("/admin/products/delete-product", product);
-    if (data.success) dispatch({ type: DELETE_PRODUCT, payload: product });
+    const { data } = await api.post("/media/delete-media", media);
+    if (data.success) dispatch({ type: DELETE_PRODUCT, payload: media });
     setAlert(data);
   } catch (ex) {
     setError(ex);

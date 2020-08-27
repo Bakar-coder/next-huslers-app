@@ -7,9 +7,7 @@ function Signin(props) {
     password: "",
   });
 
-  const [remember, setRemember] = useState({
-    checked: false,
-  });
+  const [remember, setRemember] = useState(false);
 
   const handleInputChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.value });
@@ -73,12 +71,10 @@ function Signin(props) {
                       type='checkbox'
                       name='remember'
                       value={remember}
-                      onClick={() =>
-                        setRemember({ ...remember, checked: !checked })
-                      }
-                      checked={checked && "checked"}
+                      onClick={() => setRemember(!remember)}
+                      defaultChecked
                     />
-                    <label for='remember'>Remember Me</label>
+                    <label htmlFor='remember'>Remember Me</label>
                   </div>
 
                   <button className='sign__btn' type='submit'>

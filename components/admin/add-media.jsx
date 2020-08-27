@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { withRouter } from "next/router";
 import Progressbar from "../progress";
 
-const AddMedia = ({ add_Product, router }) => {
+const AddMedia = ({ add_media, router }) => {
   const [product, setProduct] = useState({
     title: "",
     description: "",
-    price: "",
     category: "",
     fileType: "",
     artist: "",
@@ -24,12 +23,14 @@ const AddMedia = ({ add_Product, router }) => {
     const postProduct = new FormData();
     postProduct.append("file", file);
     postProduct.append("cover", cover);
+    postProduct.append("artist", artist);
+    postProduct.append("genre", genre);
+    postProduct.append("releaseDate", releaseDate);
     postProduct.append("title", product.title);
     postProduct.append("description", product.description);
-    postProduct.append("price", product.price);
     postProduct.append("category", product.category);
-    postProduct.append("fileType", product.fileType);
-    add_Product(
+    postProduct.append("type", product.fileType);
+    add_media(
       postProduct,
       router,
       setFileUploadPercentage,
@@ -157,7 +158,6 @@ const AddMedia = ({ add_Product, router }) => {
                       className='profile__textarea'
                       name='file'
                       id='file'
-                      value={file}
                       onChange={handleFileUpload}
                       required
                     />
@@ -174,7 +174,6 @@ const AddMedia = ({ add_Product, router }) => {
                       className='profile__textarea'
                       name='cover'
                       id='cover'
-                      value={cover}
                       onChange={handleCoverUpload}
                       required
                     />
@@ -187,16 +186,16 @@ const AddMedia = ({ add_Product, router }) => {
                       File Upload Type
                     </label>
                     <select
-                      class='custom-select profile__textarea'
+                      className='custom-select profile__textarea'
                       name='fileType'
                       id='fileType'
                       value={fileType}
                       onChange={handleInputChange}
                       required
                     >
-                      <option selected=''> Select File Upload Type</option>
-                      <option value='aud'>Audio</option>
-                      <option value='vid'>Video</option>
+                      <option> Select File Upload Type</option>
+                      <option defaultValue='aud'>Audio</option>
+                      <option defaultValue='vid'>Video</option>
                     </select>
                   </div>
                 </div>
@@ -245,9 +244,9 @@ const AddMedia = ({ add_Product, router }) => {
                       name='featured'
                       value={featured}
                       onClick={() => setFeatured(!featured)}
-                      checked={featured && "checked"}
+                      defaultChecked
                     />
-                    <label for='featured'>Set Featured</label>
+                    <label htmlFor='featured'>Set Featured</label>
                   </div>
                 </div>
 
@@ -260,20 +259,22 @@ const AddMedia = ({ add_Product, router }) => {
                       name='published'
                       value={published}
                       onClick={() => setPublished(!published)}
-                      checked={published && "checked"}
+                      defaultChecked
                     />
-                    <label for='published'>Set Published</label>
+                    <label htmlFor='published'>Set Published</label>
                   </div>
                 </div>
 
-                {file && cover && fileUploadPercentage > 0 && (
-                  <div className='form-group'>
-                    <p className='text-warning'>
-                      Uploaded {fileUploadPercentage}%
-                    </p>
-                    <Progressbar percentage={fileUploadPercentage} />
-                  </div>
-                )}
+                <div className='col-12'>
+                  {file && cover && fileUploadPercentage > 0 && (
+                    <div className='form-group'>
+                      <p className='text-warning'>
+                        Uploaded {fileUploadPercentage}%
+                      </p>
+                      <Progressbar percentage={fileUploadPercentage} />
+                    </div>
+                  )}
+                </div>
 
                 <div className='col-12'>
                   <button className='profile__btn' type='submit'>

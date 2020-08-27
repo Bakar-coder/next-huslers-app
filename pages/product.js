@@ -4,16 +4,16 @@ import { connect } from "react-redux";
 import { addToCart } from "../store/actions";
 import { bindActionCreators } from "redux";
 
-const SingleProduct = ({ products, auth, addToCart }) => {
+const SingleProduct = ({ media, auth, addToCart }) => {
   return (
     <section className='wrapper'>
-      <ProductDetails products={products} addToCart={addToCart} auth={auth} />
+      <ProductDetails media={media} addToCart={addToCart} auth={auth} />
     </section>
   );
 };
 
-const mapState = ({ products, auth }) => ({
-  products: products.products,
+const mapState = ({ media, auth }) => ({
+  media: media.media,
   auth: auth.isAuth,
 });
 

@@ -15,6 +15,9 @@ import {
   deleteOrder,
   momoPay,
 } from "./productsActions";
+
+import { add_media, edit_media, deleteMedia } from "./mediaActions";
+
 import { add_Product, edit_Product, deleteProduct } from "./adminActions";
 import { setLoaded, setLoading } from "./loadingActions";
 export {
@@ -41,4 +44,7 @@ export {
   momoPay,
   setLoaded,
   setLoading,
+  add_media,
+  edit_media,
+  deleteMedia,
 };

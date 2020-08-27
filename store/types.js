@@ -23,3 +23,5 @@ export const SET_TOTAL_AMOUNT = "SET_TOTAL_AMOUNT";
 export const SET_ORDERS = "SET_ORDERS";
 export const LOADING = "LOADING";
 export const REMOVE_LOADING = "REMOVE_LOADING";
+export const SET_MEDIA = "SET_MEDIA";
+export const REMOVE_MEDIA = "REMOVE_MEDIA";

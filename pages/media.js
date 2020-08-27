@@ -1,12 +1,11 @@
 import React from "react";
 import AddMedia from "../components/admin/add-media";
-import { add_Product } from "../store/actions";
+import { add_media } from "../store/actions";
 import { connect } from "react-redux";
-import requireAdmin from "../hocs/requireAdmin";
 import requireAuth from "../hocs/requireAuth";
 import { Link } from "../routes";
 
-const AdminAddProduct = ({ add_Product }) => {
+const AdminAddProduct = ({ add_media }) => {
   return (
     <div style={{ minHeight: "88vh" }}>
       <section
@@ -38,11 +37,9 @@ const AdminAddProduct = ({ add_Product }) => {
           </div>
         </div>
       </section>
-      <AddMedia add_Product={add_Product} />
+      <AddMedia add_media={add_media} />
     </div>
   );
 };
 
-export default connect(null, { add_Product })(
-  requireAuth(requireAdmin(AdminAddProduct))
-);
+export default connect(null, { add_media })(requireAuth(AdminAddProduct));

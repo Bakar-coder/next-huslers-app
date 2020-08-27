@@ -12,9 +12,7 @@ function Signup(props) {
     password2: "",
   });
 
-  const [remember, setRemember] = useState({
-    checked: false,
-  });
+  const [remember, setRemember] = useState(false);
 
   const [errors, setError] = useState({
     username: "",
@@ -219,13 +217,11 @@ function Signup(props) {
                     id='remember'
                     name='remember'
                     type='checkbox'
-                    onClick={() =>
-                      setRemember({ ...remember, checked: !checked })
-                    }
-                    checked={checked && "checked"}
+                    onClick={() => setRemember(!remember)}
+                    defaultChecked
                     required
                   />
-                  <label for='remember'>
+                  <label htmlFor='remember'>
                     I agree to the <a href='privacy.html'>Privacy Policy</a>
                   </label>
                 </div>
