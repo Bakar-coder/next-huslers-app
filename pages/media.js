@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import requireAuth from "../hocs/requireAuth";
 import { Link } from "../routes";
 
-const AdminAddProduct = ({ add_media }) => {
+const AdminAddProduct = ({ user, add_media }) => {
   return (
     <div style={{ minHeight: "88vh" }}>
       <section
@@ -37,9 +37,13 @@ const AdminAddProduct = ({ add_media }) => {
           </div>
         </div>
       </section>
-      <AddMedia add_media={add_media} />
+      <AddMedia add_media={add_media} user={user} />
     </div>
   );
 };
 
-export default connect(null, { add_media })(requireAuth(AdminAddProduct));
+const mapStateToProps = ({ auth }) => ({ user: auth.user });
+
+export default connect(mapStateToProps, { add_media })(
+  requireAuth(AdminAddProduct)
+);

@@ -16,7 +16,15 @@ import {
   momoPay,
 } from "./productsActions";
 
-import { add_media, edit_media, deleteMedia } from "./mediaActions";
+import {
+  add_media,
+  edit_media,
+  deleteMedia,
+  add_promo,
+  deletePromo,
+} from "./mediaActions";
+
+import { add_event, deleteEvent } from "./eventsActions";
 
 import { add_Product, edit_Product, deleteProduct } from "./adminActions";
 import { setLoaded, setLoading } from "./loadingActions";
@@ -47,4 +55,8 @@ export {
   add_media,
   edit_media,
   deleteMedia,
+  add_promo,
+  deletePromo,
+  add_event,
+  deleteEvent,
 };

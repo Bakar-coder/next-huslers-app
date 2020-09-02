@@ -5,11 +5,11 @@ export default (
   fileUploadPercentage,
   coverUploadPercentage
 ) => {
-  if (setFileUploadPercentage)
+  if (setFileUploadPercentage && setFileUploadPercentage)
     setFileUploadPercentage(
       parseInt(Math.round(event.loaded * 100) / event.total)
     );
-  if (setCoverUploadPercentage)
+  if (setCoverUploadPercentage && setCoverUploadPercentage)
     setCoverUploadPercentage(
       parseInt(Math.round(event.loaded * 100) / event.total)
     );

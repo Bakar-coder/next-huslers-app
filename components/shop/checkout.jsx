@@ -133,7 +133,7 @@ const CheckoutComponent = ({
                             <td>
                               <div className='main__table-text image-container'>
                                 <img
-                                  src={`${process.env.BASE_URL}/${product.cover}`}
+                                  src={`${process.env.BASE_URL}/${product.file}`}
                                   alt={product.title}
                                 />
                               </div>

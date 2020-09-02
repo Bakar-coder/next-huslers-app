@@ -8,7 +8,7 @@ import { SET_PRODUCTS } from "../store/types";
 
 const Products = ({ products, deleteProduct }) => {
   return (
-    <div className='wrapper'>
+    <div className='wrapper' style={{ minHeight: "88vh" }}>
       <div className='container'>
         <ProductsComponent products={products} deleteProduct={deleteProduct} />
       </div>

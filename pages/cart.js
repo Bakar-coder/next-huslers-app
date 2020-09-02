@@ -44,7 +44,10 @@ const ShoppingCart = ({
 
   if (cart && cartProds.length > 0) setAmount(cartProds);
   return cart && cart.length > 0 ? (
-    <div className='section section-top'>
+    <div
+      className='section section-top'
+      style={{ textAlign: "center", minHeight: "88vh" }}
+    >
       <Cart
         cart={cart}
         products={products}

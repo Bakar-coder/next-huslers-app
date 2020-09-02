@@ -1,6 +1,41 @@
 @import "partials/mixins";
 @import "partials/button";
 @import "partials/header";
+@import "partials/product";
+@import "partials/cart";
+
+html {
+  box-sizing: border-box !important;
+  font-size: 62.5%;
+
+  @include respond(tab-land) {
+    font-size: 56.25%;
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%;
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%;
+  }
+}
+
+body {
+  font-size: 1.5rem;
+  line-height: 1.7;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.5s cubic-bezier(1, 0, 0, 1);
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  color: inherit;
+}
 
 a:not([href]) {
   color: rgba(255, 255, 255, 0.7);
@@ -190,8 +225,21 @@ input[type="file"] {
   }
 }
 
-body::-webkit-scrollbar {
-  display: none;
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $warning;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  height: 2rem;
 }
 
 .Toastify {
@@ -281,4 +329,78 @@ body::-webkit-scrollbar {
   font-size: 1rem;
   background-color: #ecf0f1;
   border-radius: 0.25rem;
+}
+
+.react-datepicker-wrapper {
+  width: 100% !important;
+}
+
+.card__play {
+  color: #fd6060 !important;
+}
+
+.pt-100 {
+  padding-top: 100px;
+}
+
+.pb-100 {
+  padding-bottom: 100px;
+}
+
+.event-area {
+  // background: $white;
+  // content: "";
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  // height: 100%;
+  // background-color: #000000;
+  // opacity: 0.5;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.event-area .event-title {
+  padding-left: 15px;
+}
+
+.event-area .event-title img {
+  margin-bottom: 30px;
+}
+
+.event-area .event-title h2 {
+  font-size: 35px;
+  margin-top: -8px;
+  margin-bottom: 20px;
+}
+
+.event-area .event-title h2 span {
+  color: #f16d07;
+}
+
+.event-area .event-title .default-btn {
+  margin-top: 17px;
+}
+
+h2 {
+  font-size: 35px;
+}
+
+h2 span {
+  color: #f16d07;
+}
+
+.heading {
+  font-family: Poppins, sans-serif;
+  font-size: 4.2rem;
+  line-height: 6.300000000000001rem;
+  color: #f9f9f9;
+  font-weight: 900;
+  margin: 0 0 1rem;
+  text-align: center;
+  text-transform: uppercase;
 }

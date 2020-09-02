@@ -9,9 +9,13 @@ const HomeSection = ({ media }) => {
     videos: false,
   });
 
+  const [navOpen, setNav] = useState(false);
+
   const audz = media && media.filter((item) => item.type === "Audio");
   const vidz = media && media.filter((item) => item.type === "Video");
   const mixtapes = media && media.filter((item) => item.category === "mixtape");
+
+  const handleDropdown = () => setNav(!navOpen);
 
   return media ? (
     <section className='content'>
@@ -19,7 +23,7 @@ const HomeSection = ({ media }) => {
         <div className='container'>
           <div className='row'>
             <div className='col-12'>
-              <h2 className='content__title'>New items</h2>
+              <h2 className='content__title'>New Hits</h2>
 
               <ul
                 className='nav nav-tabs content__tabs'
@@ -116,6 +120,7 @@ const HomeSection = ({ media }) => {
               <div className='content__mobile-tabs' id='content__mobile-tabs'>
                 <div
                   className='content__mobile-tabs-btn dropdown-toggle'
+                  onClick={handleDropdown}
                   role='navigation'
                   id='mobile-tabs'
                   data-toggle='dropdown'
@@ -127,7 +132,11 @@ const HomeSection = ({ media }) => {
                 </div>
 
                 <div
-                  className='content__mobile-tabs-menu dropdown-menu'
+                  className={
+                    navOpen
+                      ? "content__mobile-tabs-menu dropdown-menu show"
+                      : "content__mobile-tabs-menu dropdown-menu"
+                  }
                   aria-labelledby='mobile-tabs'
                 >
                   <ul className='nav nav-tabs' role='tablist'>
@@ -152,8 +161,41 @@ const HomeSection = ({ media }) => {
                         role='tab'
                         aria-controls='tab-2'
                         aria-selected='false'
+                        onClick={() => {
+                          setState({
+                            ...state,
+                            mixes: false,
+                            newRelease: true,
+                            audios: false,
+                            videos: false,
+                          });
+                          setNav(!navOpen);
+                        }}
                       >
-                        MOVIES
+                        LATEST HITS
+                      </a>
+                    </li>
+
+                    <li className='nav-item' data-value='movies'>
+                      <a
+                        className='nav-link'
+                        id='2-tab'
+                        data-toggle='tab'
+                        role='tab'
+                        aria-controls='tab-2'
+                        aria-selected='false'
+                        onClick={() => {
+                          setState({
+                            ...state,
+                            mixes: true,
+                            newRelease: false,
+                            audios: false,
+                            videos: false,
+                          });
+                          setNav(!navOpen);
+                        }}
+                      >
+                        MIX-TAPES
                       </a>
                     </li>
 
@@ -165,8 +207,18 @@ const HomeSection = ({ media }) => {
                         role='tab'
                         aria-controls='tab-3'
                         aria-selected='false'
+                        onClick={() => {
+                          setState({
+                            ...state,
+                            mixes: false,
+                            newRelease: false,
+                            audios: true,
+                            videos: false,
+                          });
+                          setNav(!navOpen);
+                        }}
                       >
-                        TV SERIES
+                        AUDIOS
                       </a>
                     </li>
 
@@ -178,8 +230,18 @@ const HomeSection = ({ media }) => {
                         role='tab'
                         aria-controls='tab-4'
                         aria-selected='false'
+                        onClick={() => {
+                          setState({
+                            ...state,
+                            mixes: false,
+                            newRelease: false,
+                            audios: false,
+                            videos: true,
+                          });
+                          setNav(!navOpen);
+                        }}
                       >
-                        CARTOONS
+                        VIDEOS
                       </a>
                     </li>
                   </ul>

@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { SET_PRODUCTS, SET_MEDIA } from "../store/types";
+import {
+  SET_PRODUCTS,
+  SET_MEDIA,
+  GET_PROMOS,
+  SET_EVENTS,
+} from "../store/types";
 import Home from "../components/home";
 import { connect } from "react-redux";
 import { deleteProduct, setLoaded, addToCart } from "../store/actions";
@@ -8,6 +13,7 @@ import { deleteProduct, setLoaded, addToCart } from "../store/actions";
 const Index = ({
   products,
   media,
+  promos,
   pageLoading,
   setLoaded,
   addToCart,
@@ -29,6 +35,7 @@ const Index = ({
         auth={auth}
         cart={cart}
         media={media}
+        promos={promos}
       />
     </div>
   );
@@ -37,12 +44,23 @@ const Index = ({
 Index.getInitialProps = async ({ store }) => {
   try {
     const url = `${process.env.BASE_URL}/api/products`;
+    const eventsUrl = `${process.env.BASE_URL}/api/events`;
     const mediaUrl = `${process.env.BASE_URL}/api/media`;
+    const promoUrl = `${process.env.BASE_URL}/api/media/promos`;
     const { dispatch } = store;
     const { data } = await axios.get(url);
+    const eventsData = await axios.get(eventsUrl);
     const mediaData = await axios.get(mediaUrl);
+    const promoData = await axios.get(promoUrl);
+
     if (mediaData.data)
       dispatch({ type: SET_MEDIA, payload: mediaData.data.media });
+
+    if (eventsData.data)
+      dispatch({ type: SET_EVENTS, payload: eventsData.data.events });
+
+    if (promoData.data)
+      dispatch({ type: GET_PROMOS, payload: promoData.data.promo });
 
     if (data.products.length > 0) {
       const products = data.products;
@@ -60,6 +78,7 @@ const mapState = ({ auth, products, loading, media }) => ({
   products: products.products,
   pageLoading: loading.loading,
   media: media.media,
+  promos: media.promos,
 });
 
 export default connect(mapState, { deleteProduct, setLoaded, addToCart })(

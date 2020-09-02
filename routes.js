@@ -15,5 +15,7 @@ routes
   .add("/admin-edit-product/:id", "admin-edit-product")
   .add("admin-products")
   .add("admin-add-product")
+  .add("add-promotion")
+  .add("add-event")
   .add("login")
   .add("register");

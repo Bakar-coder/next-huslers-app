@@ -13,6 +13,8 @@ const AddProduct = ({ add_Product, router }) => {
 
   const [file, setFile] = useState("");
   const [fileUploadPercentage, setFileUploadPercentage] = useState(0);
+  const [featured, setFeatured] = useState(true);
+  const [published, setPublished] = useState(true);
 
   const handleFormSubmission = (e) => {
     e.preventDefault();
@@ -23,8 +25,8 @@ const AddProduct = ({ add_Product, router }) => {
     postProduct.append("price", product.price);
     postProduct.append("category", product.category);
     postProduct.append("stock", product.stock);
-    postProduct.append("featured", product.featured);
-    postProduct.append("published", product.published);
+    postProduct.append("featured", featured);
+    postProduct.append("published", published);
     add_Product(
       postProduct,
       router,
@@ -32,9 +34,6 @@ const AddProduct = ({ add_Product, router }) => {
       fileUploadPercentage
     );
   };
-
-  const [featured, setFeatured] = useState(true);
-  const [published, setPublished] = useState(true);
 
   const handleInputChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
@@ -88,7 +87,6 @@ const AddProduct = ({ add_Product, router }) => {
                       className='profile__input'
                       name='category'
                       id='category'
-                      value={category}
                       onChange={handleInputChange}
                       required
                     />
@@ -122,7 +120,6 @@ const AddProduct = ({ add_Product, router }) => {
                       className='profile__textarea'
                       name='file'
                       id='file'
-                      value={file}
                       onChange={handleFileUpload}
                       required
                     />
@@ -173,9 +170,9 @@ const AddProduct = ({ add_Product, router }) => {
                       name='featured'
                       value={featured}
                       onClick={() => setFeatured(!featured)}
-                      checked={featured && "checked"}
+                      defaultChecked
                     />
-                    <label for='featured'>Featured</label>
+                    <label htmlFor='featured'>Featured</label>
                   </div>
                 </div>
 
@@ -188,9 +185,9 @@ const AddProduct = ({ add_Product, router }) => {
                       name='published'
                       value={published}
                       onClick={() => setPublished(!published)}
-                      checked={published && "checked"}
+                      defaultChecked
                     />
-                    <label for='published'>Published</label>
+                    <label htmlFor='published'>Published</label>
                   </div>
                 </div>
 

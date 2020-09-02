@@ -4,6 +4,7 @@ import productsReducer from "./productsReducer";
 import shopReducer from "./shopReducer";
 import loading from "./loadingReducer";
 import media from "./mediaReducer";
+import events from "./eventReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   shop: shopReducer,
   loading,
   media,
+  events,
 });

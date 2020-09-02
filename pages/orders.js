@@ -7,7 +7,12 @@ import { connect } from "react-redux";
 import { deleteOrder } from "../store/actions";
 
 const Orders = ({ orders, deleteOrder }) => {
-  return <OrdersComponent orders={orders} deleteOrder={deleteOrder} />;
+  return (
+    <div className='wrapper' style={{ minHeight: "88vh" }}>
+      {" "}
+      <OrdersComponent orders={orders} deleteOrder={deleteOrder} />
+    </div>
+  );
 };
 
 Orders.getInitialProps = async ({ store }) => {

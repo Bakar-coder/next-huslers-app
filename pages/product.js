@@ -6,9 +6,9 @@ import { bindActionCreators } from "redux";
 
 const SingleProduct = ({ media, auth, addToCart }) => {
   return (
-    <section className='wrapper'>
+    <div className='wrapper' style={{ minHeight: "88vh" }}>
       <ProductDetails media={media} addToCart={addToCart} auth={auth} />
-    </section>
+    </div>
   );
 };
 

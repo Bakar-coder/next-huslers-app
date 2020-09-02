@@ -1,7 +1,8 @@
-import { SET_MEDIA, REMOVE_MEDIA } from "../types";
+import { SET_MEDIA, REMOVE_MEDIA, GET_PROMOS } from "../types";
 
 const mediaState = {
   media: null,
+  promos: null,
 };
 
 export default (state = mediaState, action) => {
@@ -12,6 +13,8 @@ export default (state = mediaState, action) => {
       return { ...state, media: payload };
     case REMOVE_MEDIA:
       return { ...state, media: null };
+    case GET_PROMOS:
+      return { ...state, promos: payload };
 
     default:
       return state;

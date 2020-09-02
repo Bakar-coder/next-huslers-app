@@ -100,11 +100,34 @@ const Nav = (props) => {
                           <a>Events</a>
                         </Link>
                       </li>
-                      <li onClick={handleToggle}>
-                        <Link route='media'>
-                          <a>Add Media</a>
-                        </Link>
-                      </li>
+                      {props.user && props.user.stuff && (
+                        <li onClick={handleToggle}>
+                          <Link route='media'>
+                            <a>Add Media</a>
+                          </Link>
+                        </li>
+                      )}
+                      {props.user && props.user.member && (
+                        <li onClick={handleToggle}>
+                          <Link route='media'>
+                            <a>Add Media</a>
+                          </Link>
+                        </li>
+                      )}
+                      {props.user && props.user.stuff && (
+                        <li onClick={handleToggle}>
+                          <Link route='add-promotion'>
+                            <a>Add Promotion</a>
+                          </Link>
+                        </li>
+                      )}
+                      {props.user && props.user.stuff && (
+                        <li onClick={handleToggle}>
+                          <Link route='add-event'>
+                            <a>Add Event</a>
+                          </Link>
+                        </li>
+                      )}
                       <li onClick={handleToggle}>
                         <Link route='services'>
                           <a>Services</a>

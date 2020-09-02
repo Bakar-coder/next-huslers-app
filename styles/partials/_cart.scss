@@ -1,45 +1,103 @@
-
-.order-sec {
-  margin-top: 2em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  @include respond(tab-land) {
-    margin: 2em 1em;
-    flex-direction: column;
-  }
-
-  & div {
-    display: flex;
-    height: 100%;
-    @include respond(tab-land) {
-      width: 100%;
-    }
-
-    & button {
-      &:not(:last-child) {
-        margin-right: 1rem;
-      }
-
-      @include respond(tab-land) {
-        margin-top: 2rem;
-        width: 100%;
-      }
-    }
-  }
-
-  & h4 {
-    font-weight: normal;
-    font-size: 2rem;
-    text-transform: uppercase;
-
-    & span {
-      color: $warning;
-    }
-  }
+/*-------------------------
+     18. Cart Page CSS 
+---------------------------*/
+.juvento-product-quantity input {
+  border: none;
+  color: #222555;
+  font-size: 14px;
+  font-weight: normal;
+  border: 1px solid #ededed;
+  height: 40px;
+  width: 55px;
 }
-
-
-
-
+.table-content table td.product-subtotal {
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  color: #414141;
+}
+.table-content table td .cart-plus-minus {
+  float: none;
+  margin: 0 auto;
+}
+.coupon-all {
+  margin-top: 50px;
+}
+.coupon {
+  float: left;
+}
+.coupon input {
+  background-color: transparent;
+  border: 1px solid #ddd;
+  color: #333;
+  font-size: 13px;
+  border-radius: 0;
+  height: 42px;
+  width: 120px;
+}
+.coupon-all input.button {
+  background-color: #333;
+  border: 0 none;
+  border-radius: 2px;
+  color: #fff;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  height: 42px;
+  letter-spacing: 1px;
+  line-height: 42px;
+  padding: 0 25px;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+  width: inherit;
+}
+.coupon-all input.button:hover {
+  background: #43b031;
+}
+.coupon2 {
+  float: right;
+}
+.cart-page-total {
+  padding-top: 50px;
+}
+.cart-page-total > h2 {
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+.cart-page-total > ul {
+  border: 1px solid #ddd;
+}
+.cart-page-total > ul > li {
+  list-style: none;
+  font-size: 15px;
+  color: #252525;
+  padding: 10px 30px;
+  border-bottom: 1px solid #ebebeb;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+}
+.cart-page-total ul > li > span {
+  float: right;
+}
+.cart-page-total li:last-child {
+  border-bottom: 0;
+}
+.cart-page-total > a {
+  background-color: #333;
+  border: 1px solid #333;
+  color: #fff;
+  display: inline-block;
+  margin-top: 30px;
+  padding: 10px 20px;
+  text-transform: capitalize;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.cart-page-total > a:hover {
+  background: #43b031;
+  border-color: #43b031;
+}

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { withRouter } from "next/router";
 import Progressbar from "../progress";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-const AddMedia = ({ add_media, router }) => {
+const AddMedia = ({ user, add_media, router }) => {
+  if (!user.stuff && !user.member) return (window.location = "/");
   const [product, setProduct] = useState({
     title: "",
     description: "",
@@ -11,6 +14,10 @@ const AddMedia = ({ add_media, router }) => {
     artist: "",
     genre: "",
     releaseDate: "",
+  });
+
+  const [state, setState] = useState({
+    startDate: new Date(),
   });
 
   const [file, setFile] = useState("");
@@ -25,7 +32,7 @@ const AddMedia = ({ add_media, router }) => {
     postProduct.append("cover", cover);
     postProduct.append("artist", artist);
     postProduct.append("genre", genre);
-    postProduct.append("releaseDate", releaseDate);
+    postProduct.append("releaseDate", state.startDate);
     postProduct.append("title", product.title);
     postProduct.append("description", product.description);
     postProduct.append("category", product.category);
@@ -55,15 +62,7 @@ const AddMedia = ({ add_media, router }) => {
     setCover(e.target.files[0]);
   };
 
-  const {
-    title,
-    artist,
-    genre,
-    releaseDate,
-    description,
-    category,
-    fileType,
-  } = product;
+  const { title, artist, genre, description, category, fileType } = product;
 
   return (
     <div className='content'>
@@ -136,14 +135,15 @@ const AddMedia = ({ add_media, router }) => {
                     <label className='profile__label' htmlFor='releaseDate'>
                       Release Date
                     </label>
-                    <input
-                      type='text'
+                    <DatePicker
+                      selected={state.startDate}
+                      onChange={(date) =>
+                        setState({ ...state, startDate: date })
+                      }
                       className='profile__input'
                       name='releaseDate'
                       id='releaseDate'
-                      value={releaseDate}
-                      onChange={handleInputChange}
-                      required
+                      value={state.startDate}
                     />
                   </div>
                 </div>
@@ -268,9 +268,9 @@ const AddMedia = ({ add_media, router }) => {
                 <div className='col-12'>
                   {file && cover && fileUploadPercentage > 0 && (
                     <div className='form-group'>
-                      <p className='text-warning'>
+                      <label className='profile__label'>
                         Uploaded {fileUploadPercentage}%
-                      </p>
+                      </label>
                       <Progressbar percentage={fileUploadPercentage} />
                     </div>
                   )}

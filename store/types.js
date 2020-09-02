@@ -25,3 +25,6 @@ export const LOADING = "LOADING";
 export const REMOVE_LOADING = "REMOVE_LOADING";
 export const SET_MEDIA = "SET_MEDIA";
 export const REMOVE_MEDIA = "REMOVE_MEDIA";
+export const GET_PROMOS = "GET_PROMOS";
+export const SET_EVENTS = "SET_EVENTS";
+export const DELETE_EVENT = "DELETE_EVENT";

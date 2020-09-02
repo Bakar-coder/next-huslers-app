@@ -6,19 +6,28 @@ import "react-awesome-slider/dist/custom-animations/fall-animation.css";
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
-const slider = (
-  <AutoplaySlider
-    animation='fallAnimation'
-    play={true}
-    cancelOnInteraction={false}
-    interval={6000}
-  >
-    <div data-src='/assets/images/slider/media-1.jpg' />
-    <div data-src='/assets/images/slider/media-2.jpg' />
-    <div data-src='/assets/images/slider/media-3.jpg' />
-    <div data-src='/assets/images/slider/media-4.jpg' />
-    <div data-src='/assets/images/slider/media-5.jpg' />
-  </AutoplaySlider>
-);
+const Carousel = ({ promos }) => {
+  let slider;
+  const curDate = Date.now();
 
-export default () => <Fragment>{slider}</Fragment>;
+  if (promos && promos.length > 0)
+    slider = (
+      <AutoplaySlider
+        animation='fallAnimation'
+        play={true}
+        cancelOnInteraction={false}
+        interval={6000}
+      >
+        {promos.map((promo) => (
+          <div
+            key={promo._id}
+            data-src={`${process.env.BASE_URL}/${promo.file}`}
+          />
+        ))}
+      </AutoplaySlider>
+    );
+
+  return <Fragment>{slider}</Fragment>;
+};
+
+export default Carousel;
