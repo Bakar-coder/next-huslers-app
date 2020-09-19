@@ -32,6 +32,8 @@ const searchItem = (term, history) => async (dispatch, getState, api) => {
       ...photos, 
       ...promos
     ]
+    
+    const regex = new RegExp(`${term}`, 'gi')
     console.log(content)
   } catch (ex) {
     console.log(ex)
