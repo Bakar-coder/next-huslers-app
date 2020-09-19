@@ -13,7 +13,7 @@ const HomeSection = ({ media }) => {
 
   const audz = media && media.filter((item) => item.type === "Audio");
   const vidz = media && media.filter((item) => item.type === "Video");
-  const mixtapes = media && media.filter((item) => item.category === "mixtape");
+  const mixtapes = media && media.filter((item) => item.genre === "mixtape");
 
   const handleDropdown = () => setNav(!navOpen);
 

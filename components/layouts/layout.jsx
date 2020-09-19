@@ -4,7 +4,7 @@ import Nav from "./nav";
 import { withRouter } from "next/router";
 import Scripts from "./scripts";
 
-import { setUser, logoutUser, setCart, getCart } from "../../store/actions";
+import { setUser, logoutUser, setCart, getCart, searchItem } from "../../store/actions";
 import Header from "../header";
 import Footer from "../partials/footer";
 
@@ -18,6 +18,7 @@ const Layout = ({
   router,
   setCart,
   products,
+  searchItem
 }) => {
   useEffect(() => {
     user && getCart();
@@ -30,7 +31,7 @@ const Layout = ({
       <Header />
       {router.route === "/admin" ? null : router.route ===
         "/login" ? null : router.route === "/register" ? null : (
-        <Nav user={user} logoutUser={logoutUser} router={router} cart={cart} />
+        <Nav user={user} logoutUser={logoutUser} router={router} cart={cart} searchItem={searchItem} />
       )}
       {children}
       <Footer />
@@ -48,4 +49,5 @@ export default connect(mapStateToProps, {
   logoutUser,
   setCart,
   getCart,
+  searchItem
 })(withRouter(Layout));

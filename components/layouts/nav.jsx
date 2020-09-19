@@ -5,7 +5,9 @@ import "./nav.scss";
 
 const Nav = (props) => {
   const [state, setState] = React.useState({ isOpen: false, navOpen: false });
+  const [search, setSearch] = React.useState({ term: '' })
   const { isOpen, navOpen } = state;
+  const {searchItem} = props;
 
   const handleToggle = () => {
     setState({ ...state, isOpen: !state.isOpen });
@@ -15,6 +17,14 @@ const Nav = (props) => {
     setState({ ...state, navOpen: !state.navOpen });
   };
 
+  const handleSearch = (e) => setSearch({...search, term: e.target.value})
+  const handleSearchSubmit = e => {
+    if (search.term) {
+      searchItem(search.term, props.history)
+    }
+  }
+  
+  const { term } = search
   return (
     <Fragment>
       <header className='header'>
@@ -24,7 +34,7 @@ const Nav = (props) => {
               <div className='header__content'>
                 <Link route='/'>
                   <a className='header__logo'>
-                    <img src='/img/logo.png' alt='' />
+                    <img src='/img/logo.svg' alt='' />
                   </a>
                 </Link>
 
@@ -186,8 +196,10 @@ const Nav = (props) => {
                       className='header__search-input'
                       type='text'
                       placeholder='Search...'
+                      value={term}
+                      onChange={handleSearch}
                     />
-                    <button className='header__search-button' type='button'>
+                    <button className='header__search-button' onClick={handleSearchSubmit} type='button'>
                       <i className='icon ion-ios-search'></i>
                     </button>
                     <button className='header__search-close' type='button'>

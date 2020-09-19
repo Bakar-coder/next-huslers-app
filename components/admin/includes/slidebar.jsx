@@ -111,6 +111,11 @@ const Slidebar = () => {
                     <a>Add Product</a>
                   </Link>
                 </li>
+                <li>
+                  <Link route='admin-add-photo'>
+                    <a>Add Gallery Photo</a>
+                  </Link>
+                </li>
               </div>
             </div>
             <div

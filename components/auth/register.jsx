@@ -101,9 +101,11 @@ function Signup(props) {
           <div className='col-12'>
             <div className='sign__content'>
               <form onSubmit={handleFormSubmission} className='sign__form'>
-                <a href='index.html' className='sign__logo'>
+                <Link route='/' >
+                  <a className='sign__logo'>
                   <img src='/img/logo.svg' alt='' />
-                </a>
+                  </a>
+                </Link>
 
                 <div className='sign__group'>
                   <input

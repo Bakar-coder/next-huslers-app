@@ -15,5 +15,5 @@ export default (
     );
 
   if (fileUploadPercentage === 100) setFileUploadPercentage(0);
-  if (coverUploadPercentage === 100) setCoverUploadPercentage(0);
+  if (coverUploadPercentage === 100 && setCoverUploadPercentage) setCoverUploadPercentage(0);
 };

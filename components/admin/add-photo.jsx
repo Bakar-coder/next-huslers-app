@@ -1,18 +1,11 @@
 import React, { useState } from "react";
 import { withRouter } from "next/router";
 import Progressbar from "../progress";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
-const AddMedia = ({ user, add_promo, router }) => {
-  if (!user.stuff && !user.member) return (window.location = "/");
+const AddProduct = ({ add_image, router }) => {
   const [product, setProduct] = useState({
     title: "",
-    description: "",
-  });
-
-  const [state, setState] = useState({
-    startDate: new Date(),
+    description: ""
   });
 
   const [file, setFile] = useState("");
@@ -20,12 +13,17 @@ const AddMedia = ({ user, add_promo, router }) => {
 
   const handleFormSubmission = (e) => {
     e.preventDefault();
-    const postPromo = new FormData();
-    postPromo.append("file", file);
-    postPromo.append("expDate", state.startDate);
-    postPromo.append("title", product.title);
-    postPromo.append("description", product.description);
-    add_promo(postPromo, router, setFileUploadPercentage, fileUploadPercentage);
+    const postImage = new FormData();
+    postImage.append("file", file);
+    postImage.append("title", product.title);
+    postImage.append("description", product.description);
+   
+    add_image(
+      postImage,
+      router,
+      setFileUploadPercentage,
+      fileUploadPercentage
+    );
   };
 
   const handleInputChange = (e) => {
@@ -36,7 +34,7 @@ const AddMedia = ({ user, add_promo, router }) => {
     setFile(e.target.files[0]);
   };
 
-  const { title, description } = product;
+  const { title, description} = product;
 
   return (
     <div className='content'>
@@ -50,10 +48,10 @@ const AddMedia = ({ user, add_promo, router }) => {
             >
               <div className='row'>
                 <div className='col-12'>
-                  <h4 className='profile__title'>Add Promotion</h4>
+                  <h4 className='profile__title'>Add Photo</h4>
                 </div>
 
-                <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
+                <div className='col-12 '>
                   <div className='profile__group'>
                     <label className='profile__label' htmlFor='title'>
                       Title
@@ -63,7 +61,6 @@ const AddMedia = ({ user, add_promo, router }) => {
                       className='profile__input'
                       name='title'
                       id='title'
-                      placeholder='Promotion Title'
                       value={title}
                       onChange={handleInputChange}
                       required
@@ -71,28 +68,12 @@ const AddMedia = ({ user, add_promo, router }) => {
                   </div>
                 </div>
 
-                <div className='col-12 col-md-6 col-lg-12 col-xl-6'>
-                  <div className='profile__group'>
-                    <label className='profile__label' htmlFor='releaseDate'>
-                      Set Expiration Date
-                    </label>
-                    <DatePicker
-                      selected={state.startDate}
-                      onChange={(date) =>
-                        setState({ ...state, startDate: date })
-                      }
-                      className='profile__input'
-                      name='releaseDate'
-                      id='releaseDate'
-                      value={state.startDate}
-                    />
-                  </div>
-                </div>
+               
 
                 <div className='col-12 '>
                   <div className='profile__group'>
                     <label className='profile__label' htmlFor='file'>
-                      Upload Promotion Picture
+                      Image
                     </label>
                     <input
                       type='file'
@@ -105,10 +86,11 @@ const AddMedia = ({ user, add_promo, router }) => {
                   </div>
                 </div>
 
+                
                 <div className='col-12'>
                   <div className='profile__group'>
                     <label className='profile__label' htmlFor='description'>
-                      Details
+                      Description
                     </label>
                     <textarea
                       type='text'
@@ -116,7 +98,6 @@ const AddMedia = ({ user, add_promo, router }) => {
                       id='description'
                       name='description'
                       value={description}
-                      placeholder='Promotion details...'
                       col='1'
                       row='30'
                       onChange={handleInputChange}
@@ -124,20 +105,20 @@ const AddMedia = ({ user, add_promo, router }) => {
                   </div>
                 </div>
 
-                <div className='col-12'>
-                  {file && fileUploadPercentage > 0 && (
-                    <div className='form-group'>
-                      <label className='profile__label'>
-                        Uploaded {fileUploadPercentage}%
-                      </label>
-                      <Progressbar percentage={fileUploadPercentage} />
-                    </div>
-                  )}
-                </div>
+               
+
+                {file && fileUploadPercentage > 0 && (
+                  <div className='form-group'>
+                    <p className='text-warning'>
+                      Uploaded {fileUploadPercentage}%
+                    </p>
+                    <Progressbar percentage={fileUploadPercentage} />
+                  </div>
+                )}
 
                 <div className='col-12'>
                   <button className='profile__btn' type='submit'>
-                    Save
+                    Add Photo
                   </button>
                 </div>
               </div>
@@ -149,4 +130,4 @@ const AddMedia = ({ user, add_promo, router }) => {
   );
 };
 
-export default withRouter(AddMedia);
+export default withRouter(AddProduct);

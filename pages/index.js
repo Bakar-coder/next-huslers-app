@@ -4,7 +4,7 @@ import {
   SET_PRODUCTS,
   SET_MEDIA,
   GET_PROMOS,
-  SET_EVENTS,
+  SET_EVENTS, SET_PHOTOS
 } from "../store/types";
 import Home from "../components/home";
 import { connect } from "react-redux";
@@ -46,15 +46,20 @@ Index.getInitialProps = async ({ store }) => {
     const url = `${process.env.BASE_URL}/api/products`;
     const eventsUrl = `${process.env.BASE_URL}/api/events`;
     const mediaUrl = `${process.env.BASE_URL}/api/media`;
+    const galleryUrl = `${process.env.BASE_URL}/api/photos`;
     const promoUrl = `${process.env.BASE_URL}/api/media/promos`;
     const { dispatch } = store;
     const { data } = await axios.get(url);
     const eventsData = await axios.get(eventsUrl);
     const mediaData = await axios.get(mediaUrl);
     const promoData = await axios.get(promoUrl);
+    const galleryData = await axios.get(galleryUrl);
 
     if (mediaData.data)
       dispatch({ type: SET_MEDIA, payload: mediaData.data.media });
+
+    if (galleryData.data)
+      dispatch({ type: SET_PHOTOS, payload: galleryData.data.photos });
 
     if (eventsData.data)
       dispatch({ type: SET_EVENTS, payload: eventsData.data.events });

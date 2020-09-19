@@ -72,7 +72,7 @@ const AddMedia = ({ user, add_media, router }) => {
             <form
               onSubmit={handleFormSubmission}
               className='profile__form'
-              style={{ maxWidth: "50rem", margin: "auto" }}
+              style={{ maxWidth: "80rem", margin: "auto" }}
             >
               <div className='row'>
                 <div className='col-12'>

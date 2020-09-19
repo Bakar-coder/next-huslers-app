@@ -16,4 +16,26 @@ const setLoading = () => async (dispatch, getState, api) => {
   }
 };
 
-export { setLoaded, setLoading };
+
+const searchItem = (term, history) => async (dispatch, getState, api) => {
+  try {
+    const state = getState();
+    const media = state.media.media || []
+    const products = state.products.products || []
+    const events = state.events.events || []
+    const photos = state.events.photos || []
+    const promos = state.media.promos || []
+    const content = [
+      ...media,
+      ...products, 
+      ...events, 
+      ...photos, 
+      ...promos
+    ]
+    console.log(content)
+  } catch (ex) {
+    console.log(ex)
+  }
+}
+
+export { setLoaded, setLoading, searchItem };

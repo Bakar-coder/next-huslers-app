@@ -24,10 +24,10 @@ import {
   deletePromo,
 } from "./mediaActions";
 
-import { add_event, deleteEvent } from "./eventsActions";
+import { add_event, deleteEvent, add_image, delete_image } from "./eventsActions";
 
 import { add_Product, edit_Product, deleteProduct } from "./adminActions";
-import { setLoaded, setLoading } from "./loadingActions";
+import { setLoaded, setLoading, searchItem } from "./loadingActions";
 export {
   setUser,
   logoutUser,
@@ -59,4 +59,5 @@ export {
   deletePromo,
   add_event,
   deleteEvent,
+  add_image, delete_image, searchItem
 };
