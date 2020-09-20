@@ -26,11 +26,9 @@ const Footer = () => {
                 <Link route='/'>
                   <a>Home</a>
                 </Link>
-                <Link route='/events'>
-                  <a>Events</a>
-                </Link>
-                <Link route='/services'>
-                  <a>Services</a>
+               
+                <Link route='/gallery'>
+                  <a>Gallery</a>
                 </Link>
                 <Link route='/contact'>
                   <a>Contact Us</a>

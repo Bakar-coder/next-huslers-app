@@ -77,8 +77,10 @@ const Nav = (props) => {
                   </li>
 
                   <li className='header__nav-item'>
-                    <Link route='downloads'>
-                      <a className='header__nav-link'>Downloads</a>
+                    <Link route='events'>
+                      <a className='header__nav-link'>
+                      Events{" "}
+                      </a>
                     </Link>
                   </li>
 
@@ -105,11 +107,7 @@ const Nav = (props) => {
                       }
                       aria-labelledby='dropdownMenuMore'
                     >
-                      <li onClick={handleToggle}>
-                        <Link route='events'>
-                          <a>Events</a>
-                        </Link>
-                      </li>
+                     
                       {props.user && props.user.stuff && (
                         <li onClick={handleToggle}>
                           <Link route='media'>
@@ -138,11 +136,7 @@ const Nav = (props) => {
                           </Link>
                         </li>
                       )}
-                      <li onClick={handleToggle}>
-                        <Link route='services'>
-                          <a>Services</a>
-                        </Link>
-                      </li>
+                     
 
                       <li onClick={handleToggle}>
                         <Link route='gallery'>

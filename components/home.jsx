@@ -3,6 +3,7 @@ import Carousel from "./carousel";
 import { Link } from "../routes";
 import { withRouter } from "next/router";
 import HomeSection from "./partials/home-section";
+import SocialMedia from './partials/social'
 
 const Home = ({ products, media, promos, addToCart, router, auth, cart }) => {
   return (
@@ -10,7 +11,9 @@ const Home = ({ products, media, promos, addToCart, router, auth, cart }) => {
       <header className='slider'>
         <Carousel promos={promos} />
       </header>
+      <SocialMedia/>
       <HomeSection products={products} media={media} />
+     
     </div>
   );
 };

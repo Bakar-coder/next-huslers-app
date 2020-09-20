@@ -410,3 +410,22 @@ h2 span {
   width: 100%;
 }
 
+.social-handles {
+  display: flex;
+  align-items: center;
+  max-width: 90rem;
+  padding-top: 1rem;
+  margin: auto;
+  justify-content: space-between;
+  
+
+  & a {
+    display: block;
+    margin-bottom: .5rem;
+    color: $warning;
+
+    & i {
+      margin-right: .4rem;
+    }
+  }
+}
