@@ -3,6 +3,7 @@ const next = require("next");
 const routes = require("./routes");
 const app = next({ dev: process.env.NODE_ENV !== "production" });
 const handler = routes.getRequestHandler(app);
+const port = process.env.PORT || 3000;
 const cors = require("cors");
 
 app
@@ -13,9 +14,9 @@ app
     server
       .use(cors())
       .use(handler)
-      .listen(3000, (err) => {
+      .listen(port, (err) => {
         if (err) throw err;
-        console.log("> App started on https://www.ghettohustler.com");
+        console.log(`> App started on port: ${port} `);
       });
   })
   .catch((ex) => {
