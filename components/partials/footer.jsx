@@ -11,7 +11,7 @@ const Footer = () => {
           <div className='col-12'>
             <div className='footer__content'>
               <a href='index.html' className='footer__logo'>
-                <img src='img/logo.png' alt='' />
+                <img src='img/logo.svg' alt='' />
               </a>
 
               <span className='footer__copyright'>

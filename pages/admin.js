@@ -1,12 +1,15 @@
 import React from "react";
 import AdminComponent from "../components/admin/admin";
+import { connect } from 'react-redux'
 
-const Admin = () => {
+const Admin = ({ user }) => {
   return (
     <div className='wrapper'>
-      <AdminComponent />
+      <AdminComponent user={user} />
     </div>
   );
 };
 
-export default Admin;
+const mapState = ({ auth }) => ({ user: auth.user })
+
+export default connect(mapState, null)(Admin);

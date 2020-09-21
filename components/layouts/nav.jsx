@@ -108,13 +108,7 @@ const Nav = (props) => {
                       aria-labelledby='dropdownMenuMore'
                     >
                      
-                      {props.user && props.user.stuff && (
-                        <li onClick={handleToggle}>
-                          <Link route='media'>
-                            <a>Add Media</a>
-                          </Link>
-                        </li>
-                      )}
+                     
                       {props.user && props.user.member && (
                         <li onClick={handleToggle}>
                           <Link route='media'>

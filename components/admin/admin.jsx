@@ -2,10 +2,10 @@ import React from "react";
 import Slidebar from "./includes/slidebar";
 import Main from './includes/main'
 
-const AdminComponent = () => {
+const AdminComponent = ({ user }) => {
   return (
     <div>
-      <Slidebar />
+      <Slidebar user={user} />
       <Main/>
     </div>
   );

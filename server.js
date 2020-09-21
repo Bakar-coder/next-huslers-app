@@ -15,7 +15,7 @@ app
       .use(handler)
       .listen(3000, (err) => {
         if (err) throw err;
-        console.log("> App started on http://localhost:3000");
+        console.log("> App started on https://www.ghettohustler.com");
       });
   })
   .catch((ex) => {

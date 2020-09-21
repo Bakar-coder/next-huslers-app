@@ -29,3 +29,4 @@ export const GET_PROMOS = "GET_PROMOS";
 export const SET_EVENTS = "SET_EVENTS";
 export const DELETE_EVENT = "DELETE_EVENT";
 export const SET_PHOTOS = "SET_PHOTOS";
+export const SEND_MESSAGE = "SEND_MESSAGE";

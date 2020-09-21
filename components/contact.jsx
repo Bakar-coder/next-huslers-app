@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "../routes";
+import { useRouter } from 'next/router'
 
-const ContactComponent = () => {
+
+
+const ContactComponent = ({ sendMessage }) => {
+  const router = useRouter()
+  const [state, setState] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    text: ''
+  })
+  const handleInputChange = e => setState({...state, [e.target.name]: e.target.value})
+
+  const handleSubmission = e => {
+    e.preventDefault();
+    sendMessage(state, router)
+  }
+
+
+  const { name, email, subject, text } = state
+
   return (
     <div>
       <section
@@ -44,29 +64,41 @@ const ContactComponent = () => {
                 </div>
 
                 <div className='col-12'>
-                  <form action='#' className='form form--contacts'>
+                  <form onSubmit={handleSubmission}  className='form form--contacts'>
                     <input
                       type='text'
                       className='form__input'
-                      placeholder='Name'
+                      placeholder='name'
+                      onChange={handleInputChange}
+                      name='name'
+                      value={name}
                     />
                     <input
                       type='text'
                       className='form__input'
-                      placeholder='Email'
+                      placeholder='email'
+                      onChange={handleInputChange}
+                      name='email'
+                      value={email}
                     />
                     <input
                       type='text'
                       className='form__input'
-                      placeholder='Subject'
+                      placeholder='subject'
+                      onChange={handleInputChange}
+                      name='subject'
+                      value={subject}
                     />
                     <textarea
                       id='text'
                       name='text'
                       className='form__textarea'
                       placeholder='Type your message...'
+                      onChange={handleInputChange}
+                      name='text'
+                      value={text}
                     ></textarea>
-                    <button type='button' className='form__btn'>
+                    <button type='submit' className='form__btn'>
                       Send
                     </button>
                   </form>
@@ -81,42 +113,37 @@ const ContactComponent = () => {
                 </div>
 
                 <div className='col-12'>
-                  <p className='section__text'>
-                    It is a long fact that a reader will be distracted by the
-                    readable content of a page when looking at its layout. The
-                    point of using Lorem Ipsum is that it has a more-or-less
-                    normal distribution of letters, as opposed to using.
-                  </p>
+                  
 
                   <ul className='contacts__list'>
                     <li>
-                      <a href='tel:+18002345678'>+1 (800) 234-5678</a>
+                      <a href='tel:+256792701157'>+256 (792) 701-157</a>
                     </li>
                     <li>
-                      <a href='mailto:support@moviego.com'>
-                        support@flixgo.com
+                      <a href='mailto:ghettohustlers256@gmail.com'>
+                        ghettohustlers256@gmail.com
                       </a>
                     </li>
                   </ul>
                   <ul className='contacts__social'>
                     <li className='facebook'>
-                      <a href='#'>
+                      <a href='https://web.facebook.com/GhettoHustlersEnt' target='_blank'>
                         <i className='icon ion-logo-facebook'></i>
                       </a>
                     </li>
                     <li className='instagram'>
-                      <a href='#'>
+                      <a href='https://www.instagram.com/ghettohustlersent/' target='_blank'>
                         <i className='icon ion-logo-instagram'></i>
                       </a>
                     </li>
                     <li className='twitter'>
-                      <a href='#'>
+                      <a href='https://twitter.com/Ghetto_hustlers' target='_blank'>
                         <i className='icon ion-logo-twitter'></i>
                       </a>
                     </li>
                     <li className='vk'>
-                      <a href='#'>
-                        <i className='icon ion-logo-vk'></i>
+                      <a href='https://www.youtube.com/channel/UCIql2msjhJOnbGL2uOymaGA?disable_polymer=true&nv=1' target='_blank'>
+                        <i className='icon ion-logo-youtube'></i>
                       </a>
                     </li>
                   </ul>

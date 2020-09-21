@@ -410,13 +410,20 @@ h2 span {
   width: 100%;
 }
 
+
+.social {
+  border-bottom: 1px solid rgba(210, 201, 255, 0.1);
+  padding: 1rem;
+}
+
 .social-handles {
   display: flex;
   align-items: center;
   max-width: 90rem;
-  padding-top: 1rem;
+  
   margin: auto;
   justify-content: space-between;
+  
   
 
   & a {
@@ -428,4 +435,11 @@ h2 span {
       margin-right: .4rem;
     }
   }
+}
+
+td {
+  
+  & .main__table-text{
+  text-align: center;
+}
 }

@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "../../../routes";
 
-const Slidebar = () => {
+const Slidebar = ({ user }) => {
+  const { firstName, lastName } = user
   const [state, setState] = React.useState({ isOpen: false, navOpen: false });
   const { isOpen, navOpen } = state;
 
@@ -13,8 +14,8 @@ const Slidebar = () => {
   return (
     <div className='sidebar'>
       <a href='index.html' className='sidebar__logo'>
-        {/*<img src='/assets/img/logo.svg' alt='' />*/}
-        <h3>GHETTO HUSTLERS ENT</h3>
+        <img src='/assets/img/logo.svg' alt='' />
+       
       </a>
 
       <div className='sidebar__user'>
@@ -24,7 +25,7 @@ const Slidebar = () => {
 
         <div className='sidebar__user-title'>
           <span>Admin</span>
-          <p>John Doe</p>
+  <p>{firstName} {lastName}</p>
         </div>
 
         <button className='sidebar__user-btn' type='button'>
@@ -44,7 +45,7 @@ const Slidebar = () => {
 
         <li className='sidebar__nav-item'>
           <a href='catalog.html' className='sidebar__nav-link'>
-            <i className='icon ion-ios-film'></i> Catalog
+            <i className='icon ion-ios-film'></i> Media
           </a>
         </li>
 
@@ -56,7 +57,7 @@ const Slidebar = () => {
 
         <li className='sidebar__nav-item'>
           <a href='comments.html' className='sidebar__nav-link'>
-            <i className='icon ion-ios-chatbubbles'></i> Comments
+            <i className='icon ion-ios-chatbubbles'></i> Products
           </a>
         </li>
 

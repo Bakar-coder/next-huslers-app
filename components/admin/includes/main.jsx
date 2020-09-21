@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '../../../routes'
 
 function Main(props) {
   return (
@@ -10,7 +11,7 @@ function Main(props) {
             <div className="main__title">
               <h2>Dashboard</h2>
 
-              <a href="add-item.html" className="main__title-link">add item</a>
+              <Link  route="admin-add-product" ><a className="main__title-link"> add Product</a></Link>
             </div>
           </div>
 

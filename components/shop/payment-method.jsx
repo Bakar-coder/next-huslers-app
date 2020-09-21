@@ -100,7 +100,7 @@ const Payment = ({
             <span>Total Amount</span> <span>${Number(total)}</span>
           </div>
           <a href='#' className='price__btn'>
-            Pay with Paypal
+          <PaypalButton total={total} />
           </a>
         </div>
       )}
