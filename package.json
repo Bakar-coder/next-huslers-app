@@ -3,11 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development node server.js",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production npm run build && node server.js",
-    "heroku-postbuild": "npm run build && npm start",
-    "test": "next start"
+    "start": "NODE_ENV=production node server.js",
   },
   "dependencies": {
     "@popperjs/core": "^2.4.4",
