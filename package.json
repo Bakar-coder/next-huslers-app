@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "NODE_ENV=development node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "NODE_ENV=production "npm run build &&  node server.js",
     "heroku-postbuild": "npm run build && npm start",
     "test": "next start"
   },
