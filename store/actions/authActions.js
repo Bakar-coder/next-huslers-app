@@ -15,7 +15,7 @@ export const registerUser = (user, router) => async (
     const res = await api.post("/users/register", user);
     if (res.data.success) {
       setAlert(res.data);
-      router.replace("login");
+      router.replace("/");
     }
   } catch (ex) {
     catchException(ex);
